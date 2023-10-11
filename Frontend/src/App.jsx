@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-
-import "./App.css";
 import { Landing } from "./pages/landing";
+import "./App.css";
 
 const App = () => {
   return (
