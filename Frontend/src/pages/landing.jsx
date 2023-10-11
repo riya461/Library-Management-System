@@ -1,19 +1,22 @@
-import React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import "./styles/landing.css";
 
-import { AddBook } from "../components/addBook";
+// import { AddBook } from "../components/addBook";
+import Sidebar  from "../components/sidebar";
+import TopBar from "../components/topbar";
 
 export const Landing = () => {
-    const [isAddBookVisible, setIsAddBookVisible] = useState(false);
+  // const [isAddBookVisible, setIsAddBookVisible] = useState(false);
 
-  const toggleAddBook = () => {
-    setIsAddBookVisible(!isAddBookVisible);
-  };
+  // const toggleAddBook = () => {
+  //   setIsAddBookVisible(!isAddBookVisible);
+  // };
 
   return (
     <div>
-      <table>
+      <TopBar activeLink="Dashboard" name="Librarian" />
+      <Sidebar />
+      {/* <table>
         <thead>
           <tr>
             <th>Book ID</th>
@@ -44,7 +47,7 @@ export const Landing = () => {
         </tbody>
       </table>
       <button onClick={toggleAddBook}>Add Book</button>
-      {isAddBookVisible && <AddBook />}
+      {isAddBookVisible && <AddBook />} */}
     </div>
   );
 };
