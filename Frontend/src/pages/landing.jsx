@@ -4,6 +4,7 @@ import "./styles/landing.css";
 // import { AddBook } from "../components/addBook";
 import Sidebar  from "../components/sidebar";
 import TopBar from "../components/topbar";
+import Dashboard from "../components/dashboard";
 
 export const Landing = () => {
   // const [isAddBookVisible, setIsAddBookVisible] = useState(false);
@@ -15,7 +16,8 @@ export const Landing = () => {
   return (
     <div>
       <TopBar activeLink="Dashboard" name="Librarian" />
-      <Sidebar />
+      {/* <Sidebar /> */}
+      <Dashboard />
       {/* <table>
         <thead>
           <tr>

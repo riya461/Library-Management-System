@@ -1,0 +1,61 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.dashboard .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+
+.dashboard .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: calc(30% - 2rem);
+    margin-bottom: 2rem;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.dashboard .box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.dashboard .box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.dashboard .box p {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: #007BFF;
+}
+
+.dashboard .box:hover {
+    background-color: #fff;
+}
+
+.dashboard .box:hover {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dashboard .box:hover h3,
+.dashboard .box:hover p {
+    color: #007BFF;
+}
