@@ -1,0 +1,82 @@
+.container {
+    max-width: 400px;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.user-input {
+    margin: 10px 0;
+}
+
+.user-input label {
+    font-weight: bold;
+}
+
+.user-input input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.action-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    margin: 10px 5px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+}
+
+.book-input {
+    margin: 10px 0;
+}
+
+.book-input label {
+    font-weight: bold;
+}
+
+.book-input input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+/* Style the table if you choose to use one for book details */
+.book-details {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.book-details th,
+.book-details td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.book-details th {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Add more CSS styles as needed */
