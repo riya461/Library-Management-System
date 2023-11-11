@@ -54,11 +54,13 @@
     background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
   }
-  
+
   .sidebar-list-item > a {
     text-decoration: none;
     color: #9e9ea4;
   }
+
+
   
   .sidebar-responsive {
     display: inline !important;

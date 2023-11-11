@@ -9,7 +9,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/lms" element={<Landing />} />
-          <Route path="/" element={<LoginForm />} />
+          <Route path="/l" element={<LoginForm />} />
         </Routes>
       </Router>
     </>

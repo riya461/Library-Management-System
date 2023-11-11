@@ -5,6 +5,7 @@ import {
   BsListCheck,
   BsMenuButtonWideFill,
   BsFillGearFill,
+  BsArrowLeftRight
 } from "react-icons/bs";
 import { IoLibrarySharp, IoArrowBack } from "react-icons/io5";
 import "./styles/sidebar.css";
@@ -33,7 +34,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
         </li>
         <li className="sidebar-list-item">
           <a href="">
-            <BsPlusLg className="icon" /> Issue/Return
+            <BsArrowLeftRight className="icon" /> Issue/Return
           </a>
         </li>
         <li className="sidebar-list-item">
