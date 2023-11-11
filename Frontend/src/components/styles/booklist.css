@@ -8,7 +8,30 @@
     background-color: #1d2634;
   }
   
-  .booklist-main-title {
+  .booklist-search-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 0.5px;
+    margin-bottom: 10px;
+    max-width: 85%;
+  }
+  
+  .booklist-search-container input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .booklist-search-icon {
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .booklist-title-actions {
     display: flex;
     justify-content: space-between;
     color: white;
@@ -32,9 +55,8 @@
   .booklist-add-book-button:hover {
     background-color: #004080; /* A shade darker than the main color */
   }
-  
-  /* Ensure buttons are next to each other */
-  .booklist-main-title > div {
+
+  .booklist-buttons-container {
     display: flex;
     gap: 10px;
   }
@@ -73,16 +95,16 @@
   .booklist-table td.unavailable {
     color: #d50000; /* Red */
   }
-  
-  /* Helper class for jQuery-like :contains selector */
-  .booklist-table td:last-child:contains('Yes'),
-  .booklist-table td:last-child:contains('No') {
-    padding: 5px 8px; /* Adjusted padding for better visibility */
+
+  .booklist-search-icon-container {
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
   }
   
   /* Responsive Styles */
   @media screen and (max-width: 768px) {
-    .booklist-main-title {
+    .booklist-title-actions {
       flex-direction: column;
       align-items: flex-start;
     }
@@ -91,5 +113,8 @@
     .booklist-delete-button {
       margin-top: 10px;
     }
+
+    .booklist-search-container {
+        max-width: 95%;
+      }
   }
-  
