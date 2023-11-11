@@ -1,17 +1,23 @@
-import { BrowserRouter as Router } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
-import { Landing } from "./pages/landing";
+import { useState } from 'react';
+import './App.css';
+import Header from './components/header';
+import Sidebar from './components/sidebar';
+import Dashboard from './components/dashboard';
 
-const App = () => {
+function App() {
+  const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
+
+  const OpenSidebar = () => {
+    setOpenSidebarToggle(!openSidebarToggle);
+  };
+
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-        </Routes>
-      </Router>
-    </>
+    <div className='grid-container'>
+      <Header OpenSidebar={OpenSidebar} />
+      <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
+      <Dashboard />
+    </div>
   );
-};
+}
 
 export default App;

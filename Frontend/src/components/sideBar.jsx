@@ -1,39 +1,63 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import "./styles/sidebar.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartLine, faIdCard, faBookOpen, faUsers } from "@fortawesome/free-solid-svg-icons";
+// sidebar.jsx
+import React from 'react';
+import {
+  BsGrid1X2Fill,
+  BsPlusLg,
+  BsPeopleFill,
+  BsListCheck,
+  BsMenuButtonWideFill,
+  BsFillGearFill,
+} from 'react-icons/bs';
+import { IoLibrarySharp, IoArrowBack } from 'react-icons/io5';
+import './styles/sidebar.css';
 
-const Sidebar = () => {
-  const [activeLink, setActiveLink] = useState("Dashboard");
-
-  const handleActiveLink = (text) => {
-    setActiveLink(text);
-    console.log(activeLink);
-  };
-
+function Sidebar({ openSidebarToggle, OpenSidebar }) {
   return (
-    <div className="sidebar">
-      <ul>
-        <li>
-          <FontAwesomeIcon icon={faChartLine} />
-          <Link to="/" onClick={() => handleActiveLink("Dashboard")}>Dashboard</Link>
+    <aside id='sidebar' className={openSidebarToggle ? 'sidebar-responsive' : ''}>
+      <div className='sidebar-title'>
+        {openSidebarToggle && (
+          <span className='icon back-arrow' onClick={OpenSidebar}>
+            <IoArrowBack />
+          </span>
+        )}
+      </div>
+      <div className='sidebar-brand'>
+        <IoLibrarySharp className='icon_header' /> LIBRARY
+      </div>
+      <ul className='sidebar-list'>
+        <li className='sidebar-list-item'>
+          <a href=''>
+            <BsGrid1X2Fill className='icon' /> Dashboard
+          </a>
         </li>
-        <li>
-          <FontAwesomeIcon icon={faIdCard} />
-          <Link to="/issue-return" onClick={() => handleActiveLink("Issue/Return")}>Issue/Return</Link>
+        <li className='sidebar-list-item'>
+          <a href=''>
+            <BsPlusLg className='icon' /> Add Book
+          </a>
         </li>
-        <li>
-          <FontAwesomeIcon icon={faBookOpen} />
-          <Link to="/books" onClick={() => handleActiveLink("Books")}>Books</Link>
+        <li className='sidebar-list-item'>
+          <a href=''>
+            <BsPeopleFill className='icon' /> Readers
+          </a>
         </li>
-        <li>
-          <FontAwesomeIcon icon={faUsers} />
-          <Link to="/users" onClick={() => handleActiveLink("Users")}>Users</Link>
+        <li className='sidebar-list-item'>
+          <a href=''>
+            <BsListCheck className='icon' /> Book List
+          </a>
+        </li>
+        <li className='sidebar-list-item'>
+          <a href=''>
+            <BsMenuButtonWideFill className='icon' /> Reports
+          </a>
+        </li>
+        <li className='sidebar-list-item'>
+          <a href=''>
+            <BsFillGearFill className='icon' /> Setting
+          </a>
         </li>
       </ul>
-    </div>
+    </aside>
   );
-};
+}
 
 export default Sidebar;
