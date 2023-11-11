@@ -1,0 +1,95 @@
+/* booklist.css */
+
+.booklist-main-container {
+    grid-area: main;
+    overflow-y: auto;
+    padding: 20px;
+    color: #9e9ea4;
+    background-color: #1d2634;
+  }
+  
+  .booklist-main-title {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+  }
+  
+  /* Updated styling for both buttons */
+  .booklist-delete-button,
+  .booklist-add-book-button {
+    background-color: #2962ff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Adjusted button color on hover */
+  .booklist-delete-button:hover,
+  .booklist-add-book-button:hover {
+    background-color: #004080; /* A shade darker than the main color */
+  }
+  
+  /* Ensure buttons are next to each other */
+  .booklist-main-title > div {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .booklist-table {
+    margin-top: 20px;
+  }
+  
+  .booklist-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .booklist-table th,
+  .booklist-table td {
+    border: 1px solid #8884d8;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .booklist-table th {
+    background-color: #2962ff;
+    color: white;
+  }
+  
+  /* Adjusted colors for 'Yes' and 'No' */
+  .booklist-table td:last-child {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .booklist-table td.available {
+    color: #2e7d32; /* Green */
+  }
+  
+  .booklist-table td.unavailable {
+    color: #d50000; /* Red */
+  }
+  
+  /* Helper class for jQuery-like :contains selector */
+  .booklist-table td:last-child:contains('Yes'),
+  .booklist-table td:last-child:contains('No') {
+    padding: 5px 8px; /* Adjusted padding for better visibility */
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .booklist-main-title {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .booklist-add-book-button,
+    .booklist-delete-button {
+      margin-top: 10px;
+    }
+  }
+  
