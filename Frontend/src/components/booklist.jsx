@@ -1,4 +1,3 @@
-// BookList.jsx
 import React, { useState, useEffect } from 'react';
 import { BsPlus, BsTrash, BsSearch } from 'react-icons/bs';
 import './styles/booklist.css';

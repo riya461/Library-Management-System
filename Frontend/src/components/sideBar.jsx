@@ -1,16 +1,15 @@
 import {
   BsGrid1X2Fill,
-  BsPlusLg,
   BsPeopleFill,
   BsListCheck,
   BsMenuButtonWideFill,
   BsFillGearFill,
-  BsArrowLeftRight
+  BsArrowLeftRight,
 } from "react-icons/bs";
 import { IoLibrarySharp, IoArrowBack } from "react-icons/io5";
 import "./styles/sidebar.css";
 
-function Sidebar({ openSidebarToggle, OpenSidebar }) {
+function Sidebar({ openSidebarToggle, OpenSidebar, handleActiveChange }) {
   return (
     <aside
       id="sidebar"
@@ -28,33 +27,55 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       </div>
       <ul className="sidebar-list">
         <li className="sidebar-list-item">
+          <BsGrid1X2Fill
+            className="icon"
+            onClick={() => handleActiveChange("Dashboard")}
+          />{" "}
+          Dashboard
+        </li>
+        <li className="sidebar-list-item">
           <a href="">
-            <BsGrid1X2Fill className="icon" /> Dashboard
+            <BsArrowLeftRight
+              className="icon"
+              onClick={() => handleActiveChange("Issue/Return")}
+            />{" "}
+            Issue/Return
           </a>
         </li>
         <li className="sidebar-list-item">
           <a href="">
-            <BsArrowLeftRight className="icon" /> Issue/Return
+            <BsPeopleFill
+              className="icon"
+              onClick={() => handleActiveChange("Readers")}
+            />{" "}
+            Readers
           </a>
         </li>
         <li className="sidebar-list-item">
           <a href="">
-            <BsPeopleFill className="icon" /> Readers
+            <BsListCheck
+              className="icon"
+              onClick={() => handleActiveChange("Books")}
+            />{" "}
+            Books
           </a>
         </li>
         <li className="sidebar-list-item">
           <a href="">
-            <BsListCheck className="icon" /> Books
+            <BsMenuButtonWideFill
+              className="icon"
+              onClick={() => handleActiveChange("Reports")}
+            />{" "}
+            Reports
           </a>
         </li>
         <li className="sidebar-list-item">
           <a href="">
-            <BsMenuButtonWideFill className="icon" /> Reports
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsFillGearFill className="icon" /> Setting
+            <BsFillGearFill
+              className="icon"
+              onClick={() => handleActiveChange("Setting")}
+            />{" "}
+            Setting
           </a>
         </li>
       </ul>

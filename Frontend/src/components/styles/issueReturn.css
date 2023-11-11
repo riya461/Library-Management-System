@@ -1,11 +1,9 @@
 .container {
-    max-width: 400px;
-    height: 100vh;
-    margin: 0 auto;
+    grid-area: main;
+    overflow-y: auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    text-align: center;
+    color: #9e9ea4;
+    background-color: #1d2634;
 }
 
 h2 {
@@ -59,21 +57,3 @@ h2 {
     color: red;
     margin-top: 10px;
 }
-
-/* .book-details {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.book-details th,
-.book-details td {
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
-.book-details th {
-    background-color: #007bff;
-    color: #fff;
-    font-weight: bold;
-} */
