@@ -1,22 +1,18 @@
-import { useState } from 'react';
-import './App.css';
-import Header from './components/header';
-import Sidebar from './components/sidebar';
-import Dashboard from './components/dashboard';
+import { BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import LoginForm from "./pages/login";
+import Landing from "./pages/landing";
 
 function App() {
-  const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
-
-  const OpenSidebar = () => {
-    setOpenSidebarToggle(!openSidebarToggle);
-  };
-
   return (
-    <div className='grid-container'>
-      <Header OpenSidebar={OpenSidebar} />
-      <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
-      <Dashboard />
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/lms" element={<Landing />} />
+          <Route path="/" element={<LoginForm />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
