@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./styles/issueReturn.css";
 
 function IssueReturn() {
@@ -18,10 +18,12 @@ function IssueReturn() {
 
   function validateUser(userId) {
     // Implement logic to validate the user
+    setIsValidUser(true);
   }
 
   function searchBookAvailability(bookId) {
     // Implement logic to search book availability
+    setBookAvailable(true);
   }
 
   return (
@@ -43,7 +45,9 @@ function IssueReturn() {
       {isValidUser && (
         <div className="button-group">
           <button onClick={() => setSelectedAction("issue")}>Issue Book</button>
-          <button onClick={() => setSelectedAction("return")}>Return Book</button>
+          <button onClick={() => setSelectedAction("return")}>
+            Return Book
+          </button>
         </div>
       )}
 
@@ -72,33 +76,38 @@ function IssueReturn() {
               Issue
             </button>
           )}
-          {!bookAvailable && (
-            <div className="error">Book is not available</div>
-          )}
+          {!bookAvailable && <div className="error">Book is not available</div>}
         </div>
       )}
-      {/* Example table structure:
-      <table className="book-details">
-        <thead>
-          <tr>
-            <th>Book ID</th>
-            <th>Title</th>
-            <th>Author</th>
-            {/* Add more columns as needed */}
-          {/*</tr>
-        </thead>
-        <tbody>
-          {/* Map through your book data to create rows */}
-          {/* {books.map((book) => (
-            <tr key={book.id}>
-              <td>{book.id}</td>
-              <td>{book.title}</td>
-              <td>{book.author}</td>
-              {/* Add more columns as needed */}
-            {/*</tr>
-          ))}
-        </tbody>
-      </table> */}
+
+      {selectedAction === "return" && (
+        <div>
+          <div className="book-input">
+            <label htmlFor="bookId">Book ID:</label>
+            <input
+              type="text"
+              id="bookId"
+              value={bookId}
+              onChange={(e) => setBookId(e.target.value)}
+            />
+            <button
+              onClick={() => searchBookAvailability(bookId)}
+              className="action-button"
+            >
+              Search
+            </button>
+          </div>
+          {bookAvailable && (
+            <button
+              onClick={() => handleBookReturn(bookId)}
+              className="action-button"
+            >
+              Return
+            </button>
+          )}
+          {!bookAvailable && <div className="error">Book is not available</div>}
+        </div>
+      )}
     </div>
   );
 }

@@ -3,14 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import LoginForm from "./pages/login";
 import Landing from "./pages/landing";
 
-
 function App() {
   return (
     <>
       <Router>
         <Routes>
           <Route path="/lms" element={<Landing />} />
-          <Route path="/" element={<LoginForm />} />
+          <Route path="/l" element={<LoginForm />} />
         </Routes>
       </Router>
     </>

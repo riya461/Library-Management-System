@@ -4,10 +4,17 @@ import Header from "../components/header";
 import Sidebar from "../components/sidebar";
 import Dashboard from "../components/dashboard";
 import Booklist from "../components/booklist";
-import AddBook from "../components/addBook";
+import IssueReturn from "../components/issueReturn";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
+  const [active, setActive] = useState("Issue/Return");
+
+  const handleActiveChange = (active) => {
+    console.log(active);
+    setActive(active);
+    console.log(active);
+  };
 
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle);
@@ -16,11 +23,16 @@ function App() {
   return (
     <div className="grid-container">
       <Header OpenSidebar={OpenSidebar} />
-      <Sidebar
-        openSidebarToggle={openSidebarToggle}
-        OpenSidebar={OpenSidebar}
-      />
-      <Dashboard />
+      <div className="area">
+        <Sidebar
+          openSidebarToggle={openSidebarToggle}
+          OpenSidebar={OpenSidebar}
+          handleActiveChange={handleActiveChange}
+        />
+        {active === "Dashboard" && <Dashboard />}
+        {active === "Books" && <Booklist />}
+        {active === "Issue/Return" && <IssueReturn />}
+      </div>
     </div>
   );
 }
