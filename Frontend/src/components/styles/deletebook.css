@@ -1,18 +1,19 @@
 .delete-book-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #1d2634ff; /* Dark blue background color */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-    max-width: 80%;
-    width: 100%;
-    max-height: 75vh; /* Maximum height of 75% of the viewport height */
-    overflow-y: auto; /* Enable vertical scrolling */
-  }
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1d2634ff; /* Dark blue background color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  max-width: 80%;
+  width: 100%;
+  max-height: 75vh; /* Maximum height of 75% of the viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  transition: top 0.3s; /* Add a transition for smooth movement */
+}
   
   .delete-book-container h2 {
     color: #90caf9; /* Light blue text color */
@@ -96,5 +97,20 @@
   
   .delete-book-container button:hover {
     background-color: #004080; /* Darker blue background color on hover */
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    color: #90caf9; /* Light blue text color for button */
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    color: #67aee8; /* Darker blue text color on hover */
   }
   
