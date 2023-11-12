@@ -1,3 +1,4 @@
+import React from "react";
 import {
   BsGrid1X2Fill,
   BsPeopleFill,
@@ -9,12 +10,15 @@ import {
 import { IoLibrarySharp, IoArrowBack } from "react-icons/io5";
 import "./styles/sidebar.css";
 
+
+
 function Sidebar({ openSidebarToggle, OpenSidebar, handleActiveChange }) {
+  const handleItemClick = (itemName) => {
+    handleActiveChange(itemName);
+  };
+
   return (
-    <aside
-      id="sidebar"
-      className={openSidebarToggle ? "sidebar-responsive" : ""}
-    >
+    <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive" : ""}>
       <div className="sidebar-title">
         {openSidebarToggle && (
           <span className="icon back-arrow" onClick={OpenSidebar}>
@@ -26,57 +30,23 @@ function Sidebar({ openSidebarToggle, OpenSidebar, handleActiveChange }) {
         <IoLibrarySharp className="icon_header" /> LIBRARY
       </div>
       <ul className="sidebar-list">
-        <li className="sidebar-list-item">
-          <BsGrid1X2Fill
-            className="icon"
-            onClick={() => handleActiveChange("Dashboard")}
-          />{" "}
-          Dashboard
+        <li className="sidebar-list-item" onClick={() => handleItemClick("Dashboard")}>
+          <BsGrid1X2Fill className="icon" /> Dashboard
         </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsArrowLeftRight
-              className="icon"
-              onClick={() => handleActiveChange("Issue/Return")}
-            />{" "}
-            Issue/Return
-          </a>
+        <li className="sidebar-list-item" onClick={() => handleItemClick("Issue/Return")}>
+          <BsArrowLeftRight className="icon" /> Issue/Return
         </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsPeopleFill
-              className="icon"
-              onClick={() => handleActiveChange("Readers")}
-            />{" "}
-            Readers
-          </a>
+        <li className="sidebar-list-item" onClick={() => handleItemClick("Readers")}>
+          <BsPeopleFill className="icon" /> Readers
         </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsListCheck
-              className="icon"
-              onClick={() => handleActiveChange("Books")}
-            />{" "}
-            Books
-          </a>
+        <li className="sidebar-list-item" onClick={() => handleItemClick("Books")}>
+          <BsListCheck className="icon" /> Books
         </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsMenuButtonWideFill
-              className="icon"
-              onClick={() => handleActiveChange("Reports")}
-            />{" "}
-            Reports
-          </a>
+        <li className="sidebar-list-item" onClick={() => handleItemClick("Reports")}>
+          <BsMenuButtonWideFill className="icon" /> Reports
         </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsFillGearFill
-              className="icon"
-              onClick={() => handleActiveChange("Setting")}
-            />{" "}
-            Setting
-          </a>
+        <li className="sidebar-list-item" onClick={() => handleItemClick("Setting")}>
+          <BsFillGearFill className="icon" /> Setting
         </li>
       </ul>
     </aside>
@@ -84,3 +54,4 @@ function Sidebar({ openSidebarToggle, OpenSidebar, handleActiveChange }) {
 }
 
 export default Sidebar;
+

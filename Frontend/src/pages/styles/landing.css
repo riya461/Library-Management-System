@@ -22,3 +22,26 @@ body {
         'sidebar main main main';
     height: 100vh;
 }
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.header {
+    grid-area: header;
+}
+
+.header-content {
+    background-color: #007bff;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.area {
+    grid-area: main;
+    padding: 20px;
+    overflow-y: auto;
+}
