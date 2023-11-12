@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./styles/landing.css";
 import Header from "../components/header";
 import Sidebar from "../components/sidebar";
@@ -8,12 +8,10 @@ import IssueReturn from "../components/issueReturn";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
-  const [active, setActive] = useState("Issue/Return");
+  const [active, setActive] = useState("Dashboard");
 
   const handleActiveChange = (active) => {
-    console.log(active);
     setActive(active);
-    console.log(active);
   };
 
   const OpenSidebar = () => {
@@ -23,12 +21,12 @@ function App() {
   return (
     <div className="grid-container">
       <Header OpenSidebar={OpenSidebar} />
+      <Sidebar
+        openSidebarToggle={openSidebarToggle}
+        OpenSidebar={OpenSidebar}
+        handleActiveChange={handleActiveChange}
+      />
       <div className="area">
-        <Sidebar
-          openSidebarToggle={openSidebarToggle}
-          OpenSidebar={OpenSidebar}
-          handleActiveChange={handleActiveChange}
-        />
         {active === "Dashboard" && <Dashboard />}
         {active === "Books" && <Booklist />}
         {active === "Issue/Return" && <IssueReturn />}
