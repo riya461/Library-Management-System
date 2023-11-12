@@ -120,6 +120,9 @@ const BookList = () => {
           <button className='booklist-add-book-button' onClick={toggleAddForm}>
             <BsPlus /> Add New Book
           </button>
+          <button className='booklist-add-copy-button'>
+            <BsPlus /> Add New Copy
+          </button>
         </div>
       </div>
       <div className='booklist-table'>
@@ -195,7 +198,9 @@ const BookList = () => {
             onChange={(e) => setNewBook({ ...newBook, borrowedCopies: e.target.value })}
           />
 
-          <button onClick={handleAddBook}>Add Book</button>
+          <button className="center-align-button" onClick={handleAddBook}>
+            Add Book
+          </button>
         </div>
       )}
     </main>

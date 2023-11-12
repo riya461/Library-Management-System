@@ -128,11 +128,25 @@
   }
 }
 
+.booklist-add-form button.center-align-button {
+  width: 100%;
+  margin-top: 20px;
+}
 
+.booklist-add-copy-button {
+  background-color: #2962ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
 
-
-
-
+.booklist-add-copy-button:hover {
+  background-color: #004080;
+}
 
 
 .booklist-add-form h3 {
@@ -179,7 +193,9 @@
   }
 
   .booklist-add-book-button,
-  .booklist-delete-button {
+  .booklist-delete-button,
+  .booklist-add-copy-button
+   {
       margin-top: 10px;
   }
 
