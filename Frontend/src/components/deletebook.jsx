@@ -47,6 +47,7 @@ const DeleteBook = ({ onClose, onDelete, bookTitle }) => {
   };
 
   const handleConfirm = () => {
+    console.log('Confirm button clicked');
     // Handle the deletion logic based on deleteOption and selectedBooks
     // ...
 
@@ -58,6 +59,9 @@ const DeleteBook = ({ onClose, onDelete, bookTitle }) => {
 
   return (
     <div className='delete-book-container'>
+      <button className='close-button' onClick={onClose}>
+        X
+      </button>
       <h2>Delete Book</h2>
       <input
         type='text'

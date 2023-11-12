@@ -29,6 +29,7 @@ const BookList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [bookList, setBookList] = useState(initialBooks);
   const [showAddForm, setShowAddForm] = useState(false);
+  const [showDeleteForm, setShowDeleteForm] = useState(false);
   const [newBook, setNewBook] = useState({
     id: '',
     title: '',
@@ -37,7 +38,7 @@ const BookList = () => {
     borrowedCopies: 0,
   });
 
-  const [showDeleteBook, setShowDeleteBook] = useState(false);
+  
   const [bookToDelete, setBookToDelete] = useState(null);
 
   useEffect(() => {
@@ -89,6 +90,10 @@ const BookList = () => {
     // Close the add form
     setShowAddForm(false);
 
+    // Close the delete form
+    setShowDeleteForm(false);
+
+
     // Reset the new book state for the next entry
     setNewBook({
       id: '',
@@ -103,21 +108,21 @@ const BookList = () => {
     setShowAddForm(!showAddForm);
   };
 
-  const handleDeleteBook = (book) => {
-    setBookToDelete(book);
-    setShowDeleteBook(true);
+  const toggleDeleteForm = () => {
+    setShowDeleteForm(!showDeleteForm);
   };
+
 
   const handleDeleteConfirm = () => {
     // Implement your book deletion logic here
     console.log(`Deleting book: ${bookToDelete.title}`);
     // Close the overlay
-    setShowDeleteBook(false);
+    setShowDeleteForm(false);
   };
 
   const handleDeleteCancel = () => {
     // Close the overlay
-    setShowDeleteBook(false);
+    setShowDeleteForm(false);
   };
 
   return (
@@ -136,7 +141,7 @@ const BookList = () => {
       <div className='booklist-title-actions'>
         <h3>BOOKS</h3>
         <div className='booklist-buttons-container'>
-          <button className='booklist-delete-button' onClick={() => handleDeleteBook()}>
+          <button className='booklist-delete-button' onClick={toggleDeleteForm}>
             <BsTrash /> Delete a Book
           </button>
           <button className='booklist-add-book-button' onClick={toggleAddForm}>
@@ -227,13 +232,13 @@ const BookList = () => {
       )}
 
       {/* Overlay for DeleteBook */}
-      {showDeleteBook && (
+      {showDeleteForm && (
         <DeleteBook
+          onClose={() => setShowDeleteForm(false)}  // Make sure onClose is passed correctly
           onDelete={handleDeleteConfirm}
-          onCancel={handleDeleteCancel}
           bookTitle={bookToDelete ? bookToDelete.title : ''}
         />
-      )}
+      )}      
     </main>
   );
 };
