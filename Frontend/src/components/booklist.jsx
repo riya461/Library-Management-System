@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BsPlus, BsTrash, BsSearch } from 'react-icons/bs';
 import './styles/booklist.css';
+import DeleteBook from './deletebook';
 
 const initialBooks = [
   { id: 1234, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', availableCopies: 2, borrowedCopies: 1 },
@@ -35,6 +36,9 @@ const BookList = () => {
     availableCopies: 0,
     borrowedCopies: 0,
   });
+
+  const [showDeleteBook, setShowDeleteBook] = useState(false);
+  const [bookToDelete, setBookToDelete] = useState(null);
 
   useEffect(() => {
     // Update the availability status for each book
@@ -72,15 +76,15 @@ const BookList = () => {
       return;
     }
 
-     // Set availability to 'Yes' for the new book
-     const newBookWithAvailability = { ...newBook, availability: 'Yes' };
+    // Set availability to 'Yes' for the new book
+    const newBookWithAvailability = { ...newBook, availability: 'Yes' };
 
-     // Add the new book to the book list
-     const updatedBookList = [...bookList, newBookWithAvailability].sort((a, b) =>
-       a.title.localeCompare(b.title)
-     );
- 
-     setBookList(updatedBookList);
+    // Add the new book to the book list
+    const updatedBookList = [...bookList, newBookWithAvailability].sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
+
+    setBookList(updatedBookList);
 
     // Close the add form
     setShowAddForm(false);
@@ -98,6 +102,24 @@ const BookList = () => {
   const toggleAddForm = () => {
     setShowAddForm(!showAddForm);
   };
+
+  const handleDeleteBook = (book) => {
+    setBookToDelete(book);
+    setShowDeleteBook(true);
+  };
+
+  const handleDeleteConfirm = () => {
+    // Implement your book deletion logic here
+    console.log(`Deleting book: ${bookToDelete.title}`);
+    // Close the overlay
+    setShowDeleteBook(false);
+  };
+
+  const handleDeleteCancel = () => {
+    // Close the overlay
+    setShowDeleteBook(false);
+  };
+
   return (
     <main className='booklist-main-container'>
       <div className='booklist-search-container'>
@@ -114,7 +136,7 @@ const BookList = () => {
       <div className='booklist-title-actions'>
         <h3>BOOKS</h3>
         <div className='booklist-buttons-container'>
-          <button className='booklist-delete-button'>
+          <button className='booklist-delete-button' onClick={() => handleDeleteBook()}>
             <BsTrash /> Delete a Book
           </button>
           <button className='booklist-add-book-button' onClick={toggleAddForm}>
@@ -202,6 +224,15 @@ const BookList = () => {
             Add Book
           </button>
         </div>
+      )}
+
+      {/* Overlay for DeleteBook */}
+      {showDeleteBook && (
+        <DeleteBook
+          onDelete={handleDeleteConfirm}
+          onCancel={handleDeleteCancel}
+          bookTitle={bookToDelete ? bookToDelete.title : ''}
+        />
       )}
     </main>
   );

@@ -185,21 +185,61 @@
   background-color: #004080;
 }
 
+.delete-book-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.delete-book-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.delete-buttons {
+  margin-top: 20px;
+}
+
+.delete-button,
+.cancel-button {
+  background-color: #2962ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.delete-button:hover,
+.cancel-button:hover {
+  background-color: #004080;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
   .booklist-title-actions {
-      flex-direction: column;
-      align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .booklist-add-book-button,
   .booklist-delete-button,
-  .booklist-add-copy-button
-   {
-      margin-top: 10px;
+  .booklist-add-copy-button {
+    margin-top: 10px;
   }
 
   .booklist-search-container {
-      max-width: 95%;
+    max-width: 95%;
   }
 }
