@@ -1,27 +1,30 @@
-.delete-book-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #1d2634ff; /* Dark blue background color */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  z-index: 2;
-  max-width: 80%;
-  width: 100%;
-  max-height: 75vh; /* Maximum height of 75% of the viewport height */
-  overflow-y: auto; /* Enable vertical scrolling */
-  transition: top 0.3s; /* Add a transition for smooth movement */
-}
-  
-  .delete-book-container h2 {
-    color: #90caf9; /* Light blue text color */
-    margin-bottom: 20px;
+/* addcopy.css */
+
+.add-copy-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1d2634ff; /* Dark blue background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    max-width: 80%;
+    width: 100%;
+    max-height: 75vh; /* Maximum height of 75% of the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    transition: top 0.3s; /* Add a transition for smooth movement */
   }
   
-  .delete-book-container input {
-    width: 80%; /* Adjusted width of the search bar to 80% */
+  .add-copy-container h2 {
+    color: #90caf9; /* Light blue text color */
+    margin-bottom: 20px;
+    text-align: center; /* Center the heading */
+  }
+  
+  .add-copy-container input {
+    width: 85%; /* Make the search bar 100% width */
     padding: 10px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
@@ -30,7 +33,7 @@
     color: #000; /* Dark text color */
   }
   
-  .delete-book-container table {
+  .add-copy-container table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 16px;
@@ -38,30 +41,20 @@
     overflow-y: auto; /* Enable vertical scrolling within the table */
   }
   
-  .delete-book-container th,
-  .delete-book-container td {
+  .add-copy-container th,
+  .add-copy-container td {
     border: 1px solid #90caf9; /* Light blue border color */
     padding: 8px;
     text-align: left;
     color: #90caf9; /* Light blue text color */
   }
   
-  .delete-book-container th {
+  .add-copy-container th {
     background-color: #1a237e; /* Dark blue background color for header */
   }
   
-  .delete-book-container td:first-child {
+  .add-copy-container td:first-child {
     width: 30px;
-  }
-  
-  .delete-options {
-    display: flex;
-    margin-bottom: 16px;
-  }
-  
-  .delete-options label {
-    margin-right: 20px;
-    color: #90caf9; /* Light blue text color */
   }
   
   .num-of-copies-input {
@@ -84,7 +77,8 @@
     color: #000; /* Dark text color */
   }
   
-  .delete-book-container button {
+  .add-copy-container button {
+    
     color: #90caf9; /* Light blue text color for button */
     padding: 12px;
     border: none;
@@ -92,12 +86,14 @@
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s;
+    display: block; /* Ensure the button is a block element */
+    margin: 20px auto; /* Add margin and center the button horizontally */
   }
   
-  .delete-book-container button:hover {
+  .add-copy-container button:hover {
     background-color: #004080; /* Darker blue background color on hover */
   }
-
+  
   .close-button {
     position: absolute;
     top: 10px;
@@ -112,4 +108,3 @@
   .close-button:hover {
     color: #67aee8; /* Darker blue text color on hover */
   }
-  

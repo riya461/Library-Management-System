@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BsPlus, BsTrash, BsSearch } from 'react-icons/bs';
+import { IoCloseSharp } from 'react-icons/io5';
 import './styles/booklist.css';
 import DeleteBook from './deletebook';
+import AddCopy from './addcopy';
 
 const initialBooks = [
   { id: 1234, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', availableCopies: 2, borrowedCopies: 1 },
@@ -125,6 +127,27 @@ const BookList = () => {
     setShowDeleteForm(false);
   };
 
+
+  const [showAddCopyForm, setShowAddCopyForm] = useState(false);
+  const [selectedBooksForCopy, setSelectedBooksForCopy] = useState([]);
+
+  const toggleAddCopyForm = () => {
+    setShowAddCopyForm(!showAddCopyForm);
+  };
+
+  const handleAddCopy = (copiesToAdd) => {
+    // Implement your logic to add copies to the selected books
+    console.log(`Adding ${copiesToAdd} copies to selected books`);
+    // Update the book list accordingly
+    // ...
+
+    // Reset the selected books for copy
+    setSelectedBooksForCopy([]);
+
+    // Close the add copy form
+    setShowAddCopyForm(false);
+  };
+
   return (
     <main className='booklist-main-container'>
       <div className='booklist-search-container'>
@@ -147,7 +170,7 @@ const BookList = () => {
           <button className='booklist-add-book-button' onClick={toggleAddForm}>
             <BsPlus /> Add New Book
           </button>
-          <button className='booklist-add-copy-button'>
+          <button className='booklist-add-copy-button' onClick={toggleAddCopyForm}>
             <BsPlus /> Add New Copy
           </button>
         </div>
@@ -186,7 +209,7 @@ const BookList = () => {
         <div className="form-header">
         <h3>Add New Book</h3>
         <button className="close-button" onClick={() => setShowAddForm(false)}>
-          X
+          <IoCloseSharp />
         </button>
       </div>
 
@@ -238,7 +261,15 @@ const BookList = () => {
           onDelete={handleDeleteConfirm}
           bookTitle={bookToDelete ? bookToDelete.title : ''}
         />
-      )}      
+      )}
+      
+      {showAddCopyForm && (
+        <AddCopy
+          onClose={() => setShowAddCopyForm(false)}
+          onAddCopy={handleAddCopy}
+          selectedBooks={selectedBooksForCopy}
+        />
+      )}
     </main>
   );
 };
