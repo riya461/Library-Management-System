@@ -1,9 +1,10 @@
+// addcopy.jsx
+
 import React, { useState } from 'react';
-import './styles/deletebook.css';
+import './styles/addcopy.css';
 import { IoCloseSharp } from 'react-icons/io5';
 
-const DeleteBook = ({ onClose, onDelete, bookTitle }) => {
-  // Define dummy data directly in the component
+const AddCopy = ({ onClose, onAddCopy, bookTitle }) => {
   const dummyBooks = [
     { id: 1234, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', availableCopies: 2, borrowedCopies: 1 },
     { id: 5678, title: 'To Kill a Mockingbird', author: 'Harper Lee', availableCopies: 0, borrowedCopies: 2 },
@@ -28,8 +29,7 @@ const DeleteBook = ({ onClose, onDelete, bookTitle }) => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedBooks, setSelectedBooks] = useState([]);
-  const [deleteOption, setDeleteOption] = useState('');
-  const [copiesToDelete, setCopiesToDelete] = useState(0);
+  const [copiesToAdd, setCopiesToAdd] = useState(0);
 
   const handleCheckboxChange = (id) => {
     const updatedSelectedBooks = selectedBooks.includes(id)
@@ -38,32 +38,28 @@ const DeleteBook = ({ onClose, onDelete, bookTitle }) => {
     setSelectedBooks(updatedSelectedBooks);
   };
 
-  const handleDeleteOptionChange = (option) => {
-    setDeleteOption(option);
-  };
-
-  const handleCopiesToDeleteChange = (e) => {
+  const handleCopiesToAddChange = (e) => {
     const value = parseInt(e.target.value, 10);
-    setCopiesToDelete(isNaN(value) ? 0 : value);
+    setCopiesToAdd(isNaN(value) ? 0 : value);
   };
 
   const handleConfirm = () => {
     console.log('Confirm button clicked');
-    // Handle the deletion logic based on deleteOption and selectedBooks
+    // Handle the addition logic based on selectedBooks and copiesToAdd
     // ...
 
-    // Close the DeleteBook component
+    // Close the AddCopy component
     onClose();
-    // Trigger the onDelete callback to handle the actual deletion in the parent component (BookList)
-    onDelete();
+    // Trigger the onAddCopy callback to handle the actual addition in the parent component
+    onAddCopy();
   };
 
   return (
-    <div className='delete-book-container'>
+    <div className='add-copy-container'>
       <button className='close-button' onClick={onClose}>
         <IoCloseSharp />
       </button>
-      <h2>Delete Book</h2>
+      <h2>Add Copies</h2>
       <input
         type='text'
         placeholder='Search books...'
@@ -105,30 +101,20 @@ const DeleteBook = ({ onClose, onDelete, bookTitle }) => {
             ))}
         </tbody>
       </table>
-      {/* Delete options */}
-      <div className='delete-options'>
-        <label>Delete Option:</label>
-        <select value={deleteOption} onChange={(e) => handleDeleteOptionChange(e.target.value)}>
-          <option value=''>Select an option</option>
-          <option value='deleteCopies'>Delete Copies</option>
-          <option value='deleteBook'>Delete Book</option>
-        </select>
+      {/* Input for the number of copies to add */}
+      <div className='num-of-copies-input'>
+        <label>Copies to Add:</label>
+        <input
+          type='number'
+          value={copiesToAdd}
+          onChange={handleCopiesToAddChange}
+          min='0'
+        />
       </div>
-      {deleteOption === 'deleteCopies' && (
-        <div className='num-of-copies-input'>
-          <label>Copies to Delete:</label>
-          <input
-            type='number'
-            value={copiesToDelete}
-            onChange={handleCopiesToDeleteChange}
-            min='0'
-          />
-        </div>
-      )}
       {/* Confirm button */}
       <button onClick={handleConfirm}>Confirm</button>
     </div>
   );
 };
 
-export default DeleteBook;
+export default AddCopy;
