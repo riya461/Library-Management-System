@@ -126,7 +126,7 @@ const DeleteBook = ({ onClose, onDelete, bookTitle }) => {
         </div>
       )}
       {/* Confirm button */}
-      <button onClick={handleConfirm}>Confirm</button>
+      <button className="confirm-button2" onClick={handleConfirm}>Confirm</button>
     </div>
   );
 };

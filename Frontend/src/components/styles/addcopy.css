@@ -78,7 +78,6 @@
   }
   
   .add-copy-container button {
-    
     color: #90caf9; /* Light blue text color for button */
     padding: 12px;
     border: none;
@@ -89,6 +88,10 @@
     display: block; /* Ensure the button is a block element */
     margin: 20px auto; /* Add margin and center the button horizontally */
   }
+
+ .confirm-button1 {
+  background-color: #012e5b;
+ }
   
   .add-copy-container button:hover {
     background-color: #004080; /* Darker blue background color on hover */
