@@ -112,7 +112,7 @@ const AddCopy = ({ onClose, onAddCopy, bookTitle }) => {
         />
       </div>
       {/* Confirm button */}
-      <button onClick={handleConfirm}>Confirm</button>
+      <button className="confirm-button1" onClick={handleConfirm}>Confirm</button>
     </div>
   );
 };
