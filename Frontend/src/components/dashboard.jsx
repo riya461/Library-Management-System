@@ -94,7 +94,7 @@ function Dashboard() {
         <div className="pie-chart">
           <h3>Books Overview:</h3>
           <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
+            <PieChart className="chart">
               <Pie
                 data={bookData}
                 cx="50%"
@@ -144,7 +144,7 @@ function Dashboard() {
         <div className="pie-chart">
           <h3>Members Overview:</h3>
           <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
+            <PieChart className="chart">
               <Pie
                 data={memebersData}
                 cx="50%"
