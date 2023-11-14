@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BsGrid1X2Fill,
   BsPeopleFill,
@@ -10,11 +10,12 @@ import {
 import { IoLibrarySharp, IoArrowBack } from "react-icons/io5";
 import "./styles/sidebar.css";
 
-
-
 function Sidebar({ openSidebarToggle, OpenSidebar, handleActiveChange }) {
+  const [selectedItem, setSelectedItem] = useState("Dashboard");
+
   const handleItemClick = (itemName) => {
     handleActiveChange(itemName);
+    setSelectedItem(itemName);
   };
 
   return (
@@ -30,22 +31,40 @@ function Sidebar({ openSidebarToggle, OpenSidebar, handleActiveChange }) {
         <IoLibrarySharp className="icon_header" /> LIBRARY
       </div>
       <ul className="sidebar-list">
-        <li className="sidebar-list-item" onClick={() => handleItemClick("Dashboard")}>
+        <li
+          className={`sidebar-list-item ${selectedItem === "Dashboard" ? "selected" : ""}`}
+          onClick={() => handleItemClick("Dashboard")}
+        >
           <BsGrid1X2Fill className="icon" /> Dashboard
         </li>
-        <li className="sidebar-list-item" onClick={() => handleItemClick("Issue/Return")}>
+        <li
+          className={`sidebar-list-item ${selectedItem === "Issue/Return" ? "selected" : ""}`}
+          onClick={() => handleItemClick("Issue/Return")}
+        >
           <BsArrowLeftRight className="icon" /> Issue/Return
         </li>
-        <li className="sidebar-list-item" onClick={() => handleItemClick("Readers")}>
+        <li
+          className={`sidebar-list-item ${selectedItem === "Readers" ? "selected" : ""}`}
+          onClick={() => handleItemClick("Readers")}
+        >
           <BsPeopleFill className="icon" /> Readers
         </li>
-        <li className="sidebar-list-item" onClick={() => handleItemClick("Books")}>
+        <li
+          className={`sidebar-list-item ${selectedItem === "Books" ? "selected" : ""}`}
+          onClick={() => handleItemClick("Books")}
+        >
           <BsListCheck className="icon" /> Books
         </li>
-        <li className="sidebar-list-item" onClick={() => handleItemClick("Reports")}>
+        <li
+          className={`sidebar-list-item ${selectedItem === "Reports" ? "selected" : ""}`}
+          onClick={() => handleItemClick("Reports")}
+        >
           <BsMenuButtonWideFill className="icon" /> Reports
         </li>
-        <li className="sidebar-list-item" onClick={() => handleItemClick("Setting")}>
+        <li
+          className={`sidebar-list-item ${selectedItem === "Setting" ? "selected" : ""}`}
+          onClick={() => handleItemClick("Setting")}
+        >
           <BsFillGearFill className="icon" /> Setting
         </li>
       </ul>
@@ -54,4 +73,3 @@ function Sidebar({ openSidebarToggle, OpenSidebar, handleActiveChange }) {
 }
 
 export default Sidebar;
-
