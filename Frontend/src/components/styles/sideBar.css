@@ -73,4 +73,6 @@
   height: 100vh;
 }
 
-/* Your existing styles */
+.sidebar-list-item.selected {
+  background-color: #272d39;
+}
