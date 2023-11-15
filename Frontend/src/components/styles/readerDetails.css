@@ -1,0 +1,87 @@
+/* readerDetails.css */
+
+.reader-details-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+  }
+  
+  .reader-details-container {
+    background-color: #1d2634;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 35rem;
+    width: 100%;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .reader-details-container h2 {
+    margin-bottom: 15px;
+  }
+  
+  .reader-details-info {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  .reader-details-info div {
+    flex: 1 1 calc(50% - 8px); /* Adjust as needed */
+    margin-right: 16px; /* Adjust as needed */
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+  }
+  
+  .reader-details-info div:last-child {
+    margin-right: 0;
+  }
+  
+  .reader-details-info label {
+    font-weight: bold;
+    margin-right: 8px;
+    display: inline-block;
+    width: 15rem; /* Adjust as needed */
+  }
+  
+  .reader-details-info p {
+    margin: 0;
+    word-wrap: break-word;
+    display: inline-block;
+  }
+  
+  .reader-details-info p[style="color: red;"] {
+    font-weight: bold;
+  }
+  
+  .reader-details-container h3 {
+    margin-top: 20px;
+  }
+  .reader-details-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .reader-details-container li {
+    margin-bottom: 5px;
+  }
+  
+  /* Add any additional styles as needed */
+  
