@@ -19,7 +19,9 @@ function LoginForm() {
       //implement login logic here
       setError("");
       localStorage.setItem("userid", userid);
+      localStorage.setItem("name", "Admin"); //change this to user
       localStorage.setItem("category", "admin"); //change this to user
+      localStorage.setItem("token", "logged_in");
       navigate("/");
     } catch (error) {
       setError("An error occurred! Please check your credentials");
