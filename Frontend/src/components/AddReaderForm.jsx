@@ -1,16 +1,13 @@
-// AddReaderForm.jsx
-
-import React, { useState } from 'react';
-import { IoCloseSharp } from 'react-icons/io5';
-import './styles/addReaderForm.css';
-
+import React, { useState } from "react";
+import { IoCloseSharp } from "react-icons/io5";
+import "./styles/addReaderForm.css";
 
 const AddReaderForm = ({ onAddReader, onClose }) => {
   const [newReader, setNewReader] = useState({
-    name: '',
-    email: '',
-    address: '',
-    phoneNumber: '',
+    name: "",
+    email: "",
+    address: "",
+    phoneNumber: "",
   });
 
   const handleInputChange = (e) => {
@@ -45,32 +42,47 @@ const AddReaderForm = ({ onAddReader, onClose }) => {
   return (
     <div className="readers-add-form">
       <div className="form-header">
-        <h3>Add New Reader</h3>
+        <h2>Add New Reader</h2>
         <button className="close-button" onClick={onClose}>
           <IoCloseSharp />
         </button>
       </div>
-      <label>
-        Name:
-        <input type="text" name="name" value={newReader.name} onChange={handleInputChange} />
-      </label>
-      <label>
-        Email:
-        <input type="text" name="email" value={newReader.email} onChange={handleInputChange} />
-      </label>
-      <label>
-        Address:
-        <input type="text" name="address" value={newReader.address} onChange={handleInputChange} />
-      </label>
-      <label>
-        Phone Number:
+      <div>
+        <label>Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={newReader.name}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div>
+        <label>Email:</label>
+        <input
+          type="text"
+          name="email"
+          value={newReader.email}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div>
+        <label>Address:</label>
+        <input
+          type="text"
+          name="address"
+          value={newReader.address}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div>
+        <label>Phone Number:</label>
         <input
           type="tel"
           name="phoneNumber"
           value={newReader.phoneNumber}
           onChange={handleInputChange}
         />
-      </label>
+      </div>
       <button className="center-align-button" onClick={handleAddReader}>
         Add Reader
       </button>

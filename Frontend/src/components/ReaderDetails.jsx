@@ -1,5 +1,3 @@
-// ReaderDetails.jsx
-
 import React from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
 import './styles/readerDetails.css';
@@ -49,7 +47,7 @@ const ReaderDetails = ({ reader, onClose }) => {
             </div>
             <div>
               <label>Fine:</label>
-              <p style={{ color: fine > 0 ? 'red' : 'inherit' }}>${fine}</p>
+              <p style={{ color: fine > 0 ? 'red' : 'inherit' }}>₹{fine}</p>
             </div>
           </div>
   
