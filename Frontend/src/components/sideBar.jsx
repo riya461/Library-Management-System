@@ -81,9 +81,9 @@ function Sidebar({ openSidebarToggle, OpenSidebar, handleActiveChange }) {
           className={`sidebar-list-item ${
             selectedItem === "Setting" ? "selected" : ""
           }`}
-          onClick={() => handleItemClick("Setting")}
+          onClick={() => handleItemClick("Settings")}
         >
-          <BsFillGearFill className="icon" /> Setting
+          <BsFillGearFill className="icon" /> Settings
         </li>
         {category === "admin" && (
           <li
