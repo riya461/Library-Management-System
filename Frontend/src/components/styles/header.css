@@ -8,16 +8,20 @@
   box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
 }
 
-.menu-icon {
-  display: none;
-}
-
 .header-left-icon {
-  font-size: 27px; /* Adjusted font size for the header-left-icon */
+  font-size: 27px;
 }
-/* End Header */
 
-/* Responsive Styles */
+.header-right{
+  display: flex;
+  align-items: center;
+}
+
+.header-right span{
+  font-size: 20px;
+  margin-right: 10px;
+}
+
 @media screen and (max-width: 992px) {
   .grid-container {
     grid-template-columns: 1fr;
@@ -33,12 +37,11 @@
     display: inline;
   }
 
-
-
-  .sidebar-title > span {
+  .sidebar-title>span {
     display: inline;
   }
 }
+
 @media screen and (max-width: 576px) {
   .header-left {
     display: none;
