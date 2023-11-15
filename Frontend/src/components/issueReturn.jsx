@@ -6,7 +6,7 @@ function IssueReturn() {
   const [isValidUser, setIsValidUser] = useState(false);
   const [selectedAction, setSelectedAction] = useState("");
   const [bookId, setBookId] = useState("");
-  const [bookAvailable, setBookAvailable] = useState(false);
+  const [bookAvailable, setBookAvailable] = useState(true);
 
   function handleBookSelection(book) {
     // Implement logic to handle book selection
