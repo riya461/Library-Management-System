@@ -15,14 +15,19 @@ h2 {
     margin: 10px 0;
 }
 
-.user-input label {
+.user-input label,.book-input label{
     font-weight: bold;
+    margin-right: 10px;
 }
 
-.user-input input {
-    width: 100%;
+.user-input input,.book-input input {
+    width: 50%;
     padding: 5px;
     margin-top: 5px;
+}
+
+.container button {
+    border-radius:10px;
 }
 
 .action-button {
@@ -36,21 +41,18 @@ h2 {
 
 .button-group {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.button-group button {
+    padding: 5px;
+    border-radius:0;
+    border: none;
 }
 
 .book-input {
     margin: 10px 0;
-}
-
-.book-input label {
-    font-weight: bold;
-}
-
-.book-input input {
-    width: 100%;
-    padding: 5px;
-    margin-top: 5px;
 }
 
 .error {
