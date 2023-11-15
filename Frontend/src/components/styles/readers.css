@@ -143,11 +143,6 @@
     background-color: #004080;
   }
 
-  /* readers.css */
-
-/* ... (unchanged code) */
-
-/* Reader Details Styles */
 .reader-details-overlay {
     position: fixed;
     top: 0;
@@ -190,7 +185,4 @@
     color: white;
     cursor: pointer;
   }
-  
-  /* ... (unchanged code) */
-  
   

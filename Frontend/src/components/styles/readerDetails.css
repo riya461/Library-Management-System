@@ -43,8 +43,8 @@
   }
   
   .reader-details-info div {
-    flex: 1 1 calc(50% - 8px); /* Adjust as needed */
-    margin-right: 16px; /* Adjust as needed */
+    flex: 1 1 calc(50% - 8px); 
+    margin-right: 16px; 
     margin-bottom: 10px;
     display: flex;
     align-items: baseline;
@@ -58,7 +58,7 @@
     font-weight: bold;
     margin-right: 8px;
     display: inline-block;
-    width: 15rem; /* Adjust as needed */
+    width: 15rem;
   }
   
   .reader-details-info p {
@@ -83,5 +83,5 @@
     margin-bottom: 5px;
   }
   
-  /* Add any additional styles as needed */
+ 
   
