@@ -12,12 +12,12 @@
   font-size: 27px;
 }
 
-.header-right{
+.header-right {
   display: flex;
   align-items: center;
 }
 
-.header-right span{
+.header-right span {
   font-size: 20px;
   margin-right: 10px;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { BsPersonCircle, BsJustify } from "react-icons/bs";
+import { BsPersonCircle} from "react-icons/bs";
 import "./styles/header.css";
 function Header({ OpenSidebar }) {
   const user=localStorage.getItem("userid");

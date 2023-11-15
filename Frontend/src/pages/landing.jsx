@@ -6,6 +6,7 @@ import Dashboard from "../components/dashboard";
 import Booklist from "../components/booklist";
 import IssueReturn from "../components/issueReturn";
 import Readers from "../components/readers";
+import Admin from "../components/admin";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -32,6 +33,7 @@ function App() {
         {active === "Books" && <Booklist />}
         {active === "Issue/Return" && <IssueReturn />}
         {active === "Readers" && <Readers />}
+        {active === "Admin" && <Admin />}
       </div>
     </div>
   );
