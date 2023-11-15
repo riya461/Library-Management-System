@@ -8,7 +8,7 @@ function Header({ OpenSidebar }) {
   const name = localStorage.getItem("name");
   const token = localStorage.getItem("token");
   const handleDropdown = () => {
-     setDropdown(!dropdown);
+    setDropdown(!dropdown);
   };
 
   const navigate = useNavigate();

@@ -24,6 +24,7 @@ function Settings() {
 
   return (
     <div className="Settings">
+      <h2>Change Password</h2>
       <input
         type="password"
         placeholder="Enter new password"
