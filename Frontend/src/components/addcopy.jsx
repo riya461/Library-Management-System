@@ -191,6 +191,7 @@ const AddCopy = ({ onClose, onAddCopy, bookTitle }) => {
             <th>Author</th>
             <th>Available Copies</th>
             <th>Borrowed Copies</th>
+            <th>Publis</th>
           </tr>
         </thead>
         {/* Table body */}
