@@ -5,165 +5,160 @@ import "./styles/booklist.css";
 import DeleteBook from "./deletebook";
 import AddCopy from "./addcopy";
 
-// const bookList = [
-//   {
-//     id: 1234,
-//     title: "The Great Gatsby",
-//     author: "F. Scott Fitzgerald",
-//     availableCopies: 2,
-//     borrowedCopies: 1,
-//   },
-//   {
-//     id: 5678,
-//     title: "To Kill a Mockingbird",
-//     author: "Harper Lee",
-//     availableCopies: 0,
-//     borrowedCopies: 2,
-//   },
-//   {
-//     id: 9101,
-//     title: "1984",
-//     author: "George Orwell",
-//     availableCopies: 5,
-//     borrowedCopies: 0,
-//   },
-//   {
-//     id: 2345,
-//     title: "Brave New World",
-//     author: "Aldous Huxley",
-//     availableCopies: 3,
-//     borrowedCopies: 1,
-//   },
-//   {
-//     id: 6789,
-//     title: "The Catcher in the Rye",
-//     author: "J.D. Salinger",
-//     availableCopies: 0,
-//     borrowedCopies: 3,
-//   },
-//   {
-//     id: 1122,
-//     title: "Animal Farm",
-//     author: "George Orwell",
-//     availableCopies: 2,
-//     borrowedCopies: 1,
-//   },
-//   {
-//     id: 1314,
-//     title: "Lord of the Flies",
-//     author: "William Golding",
-//     availableCopies: 0,
-//     borrowedCopies: 2,
-//   },
-//   {
-//     id: 1516,
-//     title: "Pride and Prejudice",
-//     author: "Jane Austen",
-//     availableCopies: 4,
-//     borrowedCopies: 0,
-//   },
-//   {
-//     id: 1718,
-//     title: "The Hobbit",
-//     author: "J.R.R. Tolkien",
-//     availableCopies: 0,
-//     borrowedCopies: 3,
-//   },
-//   {
-//     id: 2122,
-//     title: "Moby-Dick",
-//     author: "Herman Melville",
-//     availableCopies: 1,
-//     borrowedCopies: 2,
-//   },
-//   {
-//     id: 2324,
-//     title: "Jane Eyre",
-//     author: "Charlotte Brontë",
-//     availableCopies: 0,
-//     borrowedCopies: 3,
-//   },
-//   {
-//     id: 2526,
-//     title: "Crime and Punishment",
-//     author: "Fyodor Dostoevsky",
-//     availableCopies: 3,
-//     borrowedCopies: 0,
-//   },
-//   {
-//     id: 2728,
-//     title: "The Odyssey",
-//     author: "Homer",
-//     availableCopies: 0,
-//     borrowedCopies: 2,
-//   },
-//   {
-//     id: 2930,
-//     title: "Frankenstein",
-//     author: "Mary Shelley",
-//     availableCopies: 2,
-//     borrowedCopies: 1,
-//   },
-//   {
-//     id: 3132,
-//     title: "Dracula",
-//     author: "Bram Stoker",
-//     availableCopies: 0,
-//     borrowedCopies: 3,
-//   },
-//   {
-//     id: 3334,
-//     title: "The Iliad",
-//     author: "Homer",
-//     availableCopies: 4,
-//     borrowedCopies: 0,
-//   },
-//   {
-//     id: 3536,
-//     title: "Wuthering Heights",
-//     author: "Emily Brontë",
-//     availableCopies: 0,
-//     borrowedCopies: 2,
-//   },
-//   {
-//     id: 3738,
-//     title: "The Count of Monte Cristo",
-//     author: "Alexandre Dumas",
-//     availableCopies: 3,
-//     borrowedCopies: 0,
-//   },
-//   {
-//     id: 3940,
-//     title: "Anna Karenina",
-//     author: "Leo Tolstoy",
-//     availableCopies: 0,
-//     borrowedCopies: 3,
-//   },
-// ];
+const initialBooks = [
+  {
+    id: 1234,
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    availableCopies: 2,
+    borrowedCopies: 1,
+  },
+  {
+    id: 5678,
+    title: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    availableCopies: 0,
+    borrowedCopies: 2,
+  },
+  {
+    id: 9101,
+    title: "1984",
+    author: "George Orwell",
+    availableCopies: 5,
+    borrowedCopies: 0,
+  },
+  {
+    id: 2345,
+    title: "Brave New World",
+    author: "Aldous Huxley",
+    availableCopies: 3,
+    borrowedCopies: 1,
+  },
+  {
+    id: 6789,
+    title: "The Catcher in the Rye",
+    author: "J.D. Salinger",
+    availableCopies: 0,
+    borrowedCopies: 3,
+  },
+  {
+    id: 1122,
+    title: "Animal Farm",
+    author: "George Orwell",
+    availableCopies: 2,
+    borrowedCopies: 1,
+  },
+  {
+    id: 1314,
+    title: "Lord of the Flies",
+    author: "William Golding",
+    availableCopies: 0,
+    borrowedCopies: 2,
+  },
+  {
+    id: 1516,
+    title: "Pride and Prejudice",
+    author: "Jane Austen",
+    availableCopies: 4,
+    borrowedCopies: 0,
+  },
+  {
+    id: 1718,
+    title: "The Hobbit",
+    author: "J.R.R. Tolkien",
+    availableCopies: 0,
+    borrowedCopies: 3,
+  },
+  {
+    id: 2122,
+    title: "Moby-Dick",
+    author: "Herman Melville",
+    availableCopies: 1,
+    borrowedCopies: 2,
+  },
+  {
+    id: 2324,
+    title: "Jane Eyre",
+    author: "Charlotte Brontë",
+    availableCopies: 0,
+    borrowedCopies: 3,
+  },
+  {
+    id: 2526,
+    title: "Crime and Punishment",
+    author: "Fyodor Dostoevsky",
+    availableCopies: 3,
+    borrowedCopies: 0,
+  },
+  {
+    id: 2728,
+    title: "The Odyssey",
+    author: "Homer",
+    availableCopies: 0,
+    borrowedCopies: 2,
+  },
+  {
+    id: 2930,
+    title: "Frankenstein",
+    author: "Mary Shelley",
+    availableCopies: 2,
+    borrowedCopies: 1,
+  },
+  {
+    id: 3132,
+    title: "Dracula",
+    author: "Bram Stoker",
+    availableCopies: 0,
+    borrowedCopies: 3,
+  },
+  {
+    id: 3334,
+    title: "The Iliad",
+    author: "Homer",
+    availableCopies: 4,
+    borrowedCopies: 0,
+  },
+  {
+    id: 3536,
+    title: "Wuthering Heights",
+    author: "Emily Brontë",
+    availableCopies: 0,
+    borrowedCopies: 2,
+  },
+  {
+    id: 3738,
+    title: "The Count of Monte Cristo",
+    author: "Alexandre Dumas",
+    availableCopies: 3,
+    borrowedCopies: 0,
+  },
+  {
+    id: 3940,
+    title: "Anna Karenina",
+    author: "Leo Tolstoy",
+    availableCopies: 0,
+    borrowedCopies: 3,
+  },
+];
 
 const BookList = () => {
-  useEffect(() => {
-    fetch("http://localhost:5000/api/v1/books")
-      .then((res) => res.json())
-      .then((data) => setBookList(data));
-  }
-  , []);
   const [searchTerm, setSearchTerm] = useState("");
-  const [bookList, setBookList] = useState("");
+  const [bookList, setBookList] = useState(initialBooks);
   const [showAddForm, setShowAddForm] = useState(false);
   const [showDeleteForm, setShowDeleteForm] = useState(false);
   const [newBook, setNewBook] = useState({
     id: "",
     title: "",
     author: "",
-    totalCopies: 0
+    availableCopies: 0,
+    borrowedCopies: 0,
   });
 
   const [bookToDelete, setBookToDelete] = useState(null);
 
   useEffect(() => {
     // Update the availability status for each book
-    const updatedBookList = bookList.map((book) => {
+    const updatedBookList = initialBooks.map((book) => {
       const availability = getAvailability(book.availableCopies);
       return { ...book, availability };
     });
@@ -176,7 +171,7 @@ const BookList = () => {
 
   useEffect(() => {
     // Filter and sort the book list based on the search term
-    const filteredBooks = bookList
+    const filteredBooks = initialBooks
       .filter((book) =>
         book.title.toLowerCase().includes(searchTerm.toLowerCase())
       )
@@ -223,7 +218,8 @@ const BookList = () => {
       id: "",
       title: "",
       author: "",
-      totalCopies: 0,
+      availableCopies: 0,
+      borrowedCopies: 0,
     });
   };
 
@@ -266,8 +262,6 @@ const BookList = () => {
     // Close the add copy form
     setShowAddCopyForm(false);
   };
-
-
 
   return (
     <main className="booklist-main-container">
@@ -365,16 +359,24 @@ const BookList = () => {
             onChange={(e) => setNewBook({ ...newBook, author: e.target.value })}
           />
 
-          <label>Total Copies:</label>
+          <label>Available Copies:</label>
           <input
             type="number"
-            value={newBook.totalCopies}
+            value={newBook.availableCopies}
             onChange={(e) =>
-              setNewBook({ ...newBook, totalCopies: e.target.value })
+              setNewBook({ ...newBook, availableCopies: e.target.value })
             }
           />
 
-          
+          <label>Borrowed Copies:</label>
+          <input
+            type="number"
+            value={newBook.borrowedCopies}
+            onChange={(e) =>
+              setNewBook({ ...newBook, borrowedCopies: e.target.value })
+            }
+          />
+
           <button className="center-align-button" onClick={handleAddBook}>
             Add Book
           </button>
