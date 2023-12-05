@@ -1,0 +1,8 @@
+
+
+insert into authors
+values
+(100,'George Orwell');
+                                                
+insert into book values(9101,100,'1984','classic',200,5,5,NULL,1) , (1122,100,'Animal Farm','classic',200,2,3,NULL,1) ;
+

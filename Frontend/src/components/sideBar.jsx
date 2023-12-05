@@ -69,14 +69,14 @@ function Sidebar({ openSidebarToggle, OpenSidebar, handleActiveChange }) {
         >
           <BsListCheck className="icon" /> Books
         </li>
-        <li
+        {/* <li
           className={`sidebar-list-item ${
             selectedItem === "Reports" ? "selected" : ""
           }`}
           onClick={() => handleItemClick("Reports")}
         >
           <BsMenuButtonWideFill className="icon" /> Reports
-        </li>
+        </li> */}
         <li
           className={`sidebar-list-item ${
             selectedItem === "Setting" ? "selected" : ""

@@ -1,11 +1,12 @@
 {
-  "name": "library",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Library management system with PERN stack",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
