@@ -1,149 +1,24 @@
 // addcopy.jsx
 
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import "./styles/addcopy.css";
 import { IoCloseSharp } from "react-icons/io5";
 
 const AddCopy = ({ onClose, onAddCopy, bookTitle }) => {
-  const dummyBooks = [
-    {
-      id: 1234,
-      title: "The Great Gatsby",
-      author: "F. Scott Fitzgerald",
-      availableCopies: 2,
-      borrowedCopies: 1,
-    },
-    {
-      id: 5678,
-      title: "To Kill a Mockingbird",
-      author: "Harper Lee",
-      availableCopies: 0,
-      borrowedCopies: 2,
-    },
-    {
-      id: 9101,
-      title: "1984",
-      author: "George Orwell",
-      availableCopies: 5,
-      borrowedCopies: 0,
-    },
-    {
-      id: 2345,
-      title: "Brave New World",
-      author: "Aldous Huxley",
-      availableCopies: 3,
-      borrowedCopies: 1,
-    },
-    {
-      id: 6789,
-      title: "The Catcher in the Rye",
-      author: "J.D. Salinger",
-      availableCopies: 0,
-      borrowedCopies: 3,
-    },
-    {
-      id: 1122,
-      title: "Animal Farm",
-      author: "George Orwell",
-      availableCopies: 2,
-      borrowedCopies: 1,
-    },
-    {
-      id: 1314,
-      title: "Lord of the Flies",
-      author: "William Golding",
-      availableCopies: 0,
-      borrowedCopies: 2,
-    },
-    {
-      id: 1516,
-      title: "Pride and Prejudice",
-      author: "Jane Austen",
-      availableCopies: 4,
-      borrowedCopies: 0,
-    },
-    {
-      id: 1718,
-      title: "The Hobbit",
-      author: "J.R.R. Tolkien",
-      availableCopies: 0,
-      borrowedCopies: 3,
-    },
-    {
-      id: 2122,
-      title: "Moby-Dick",
-      author: "Herman Melville",
-      availableCopies: 1,
-      borrowedCopies: 2,
-    },
-    {
-      id: 2324,
-      title: "Jane Eyre",
-      author: "Charlotte Brontë",
-      availableCopies: 0,
-      borrowedCopies: 3,
-    },
-    {
-      id: 2526,
-      title: "Crime and Punishment",
-      author: "Fyodor Dostoevsky",
-      availableCopies: 3,
-      borrowedCopies: 0,
-    },
-    {
-      id: 2728,
-      title: "The Odyssey",
-      author: "Homer",
-      availableCopies: 0,
-      borrowedCopies: 2,
-    },
-    {
-      id: 2930,
-      title: "Frankenstein",
-      author: "Mary Shelley",
-      availableCopies: 2,
-      borrowedCopies: 1,
-    },
-    {
-      id: 3132,
-      title: "Dracula",
-      author: "Bram Stoker",
-      availableCopies: 0,
-      borrowedCopies: 3,
-    },
-    {
-      id: 3334,
-      title: "The Iliad",
-      author: "Homer",
-      availableCopies: 4,
-      borrowedCopies: 0,
-    },
-    {
-      id: 3536,
-      title: "Wuthering Heights",
-      author: "Emily Brontë",
-      availableCopies: 0,
-      borrowedCopies: 2,
-    },
-    {
-      id: 3738,
-      title: "The Count of Monte Cristo",
-      author: "Alexandre Dumas",
-      availableCopies: 3,
-      borrowedCopies: 0,
-    },
-    {
-      id: 3940,
-      title: "Anna Karenina",
-      author: "Leo Tolstoy",
-      availableCopies: 0,
-      borrowedCopies: 3,
-    },
-  ];
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedBooks, setSelectedBooks] = useState([]);
-  const [copiesToAdd, setCopiesToAdd] = useState(0);
+  const [books, setBookList] = useState([]);
+  
+  useEffect(() => {
+    fetch("http://localhost:5000/api/books/get")
+     .then(res => res.json())
+     .then(
+       (result) => {
+         setBookList(result);
+         console.log(result);
+       })
+       },[]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [selectedBooks, setSelectedBooks] = useState([]);
+    const [copiesToAdd, setCopiesToAdd] = useState(0);
 
   const handleCheckboxChange = (id) => {
     const updatedSelectedBooks = selectedBooks.includes(id)
@@ -196,12 +71,12 @@ const AddCopy = ({ onClose, onAddCopy, bookTitle }) => {
         </thead>
         {/* Table body */}
         <tbody>
-          {dummyBooks
+          {books
             .filter((book) =>
               book.title.toLowerCase().includes(searchTerm.toLowerCase())
             )
             .map((book) => (
-              <tr key={book.id}>
+              <tr key={book.isbn}>
                 <td>
                   <input
                     type="checkbox"
@@ -209,11 +84,11 @@ const AddCopy = ({ onClose, onAddCopy, bookTitle }) => {
                     onChange={() => handleCheckboxChange(book.id)}
                   />
                 </td>
-                <td>{book.id}</td>
+                <td>{book.isbn}</td>
                 <td>{book.title}</td>
-                <td>{book.author}</td>
-                <td>{book.availableCopies}</td>
-                <td>{book.borrowedCopies}</td>
+                <td>{book.author_name}</td>
+                <td>{book.available}</td>
+                <td>{book.borrowed}</td>
               </tr>
             ))}
         </tbody>
