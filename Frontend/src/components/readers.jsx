@@ -1,176 +1,30 @@
 import { useState, useEffect } from "react";
 import { BsPlus, BsSearch } from "react-icons/bs";
-import AddReaderForm from "./AddReaderForm"; // Assuming the correct filename
+import { IoCloseSharp } from "react-icons/io5";
 import ReaderDetails from "./ReaderDetails"; // Assuming the correct filename
 import "./styles/readers.css";
 
 const Readers = () => {
   // Hard-coded details for 25 readers
-  const hardCodedReaders = [
-    {
-      id: 1001,
-      name: "Harry Potter",
-      email: "harry@example.com",
-      booksBorrowed: 2,
-    },
-    {
-      id: 1002,
-      name: "Hermione Granger",
-      email: "hermione@example.com",
-      booksBorrowed: 3,
-    },
-    {
-      id: 1003,
-      name: "Ron Weasley",
-      email: "ron@example.com",
-      booksBorrowed: 1,
-    },
-    {
-      id: 1004,
-      name: "Albus Dumbledore",
-      email: "albus@example.com",
-      booksBorrowed: 0,
-    },
-    {
-      id: 1005,
-      name: "Severus Snape",
-      email: "severus@example.com",
-      booksBorrowed: 1,
-    },
-    {
-      id: 1006,
-      name: "Luna Lovegood",
-      email: "luna@example.com",
-      booksBorrowed: 2,
-    },
-    {
-      id: 1007,
-      name: "Sirius Black",
-      email: "sirius@example.com",
-      booksBorrowed: 0,
-    },
-    {
-      id: 1008,
-      name: "Ginny Weasley",
-      email: "ginny@example.com",
-      booksBorrowed: 1,
-    },
-    {
-      id: 1009,
-      name: "Nymphadora Tonks",
-      email: "tonks@example.com",
-      booksBorrowed: 3,
-    },
-    {
-      id: 1010,
-      name: "Fred Weasley",
-      email: "fred@example.com",
-      booksBorrowed: 2,
-    },
-    {
-      id: 1011,
-      name: "George Weasley",
-      email: "george@example.com",
-      booksBorrowed: 2,
-    },
-    { id: 1012, name: "Dobby", email: "dobby@example.com", booksBorrowed: 1 },
-    {
-      id: 1013,
-      name: "Lucius Malfoy",
-      email: "lucius@example.com",
-      booksBorrowed: 0,
-    },
-    {
-      id: 1014,
-      name: "Bellatrix Lestrange",
-      email: "bellatrix@example.com",
-      booksBorrowed: 1,
-    },
-    {
-      id: 1015,
-      name: "Remus Lupin",
-      email: "remus@example.com",
-      booksBorrowed: 2,
-    },
-    { id: 1016, name: "Cho Chang", email: "cho@example.com", booksBorrowed: 1 },
-    {
-      id: 1017,
-      name: "Cedric Diggory",
-      email: "cedric@example.com",
-      booksBorrowed: 0,
-    },
-    {
-      id: 1018,
-      name: "Arthur Weasley",
-      email: "arthur@example.com",
-      booksBorrowed: 3,
-    },
-    {
-      id: 1019,
-      name: "Neville Longbottom",
-      email: "neville@example.com",
-      booksBorrowed: 1,
-    },
-    {
-      id: 1020,
-      name: "Molly Weasley",
-      email: "molly@example.com",
-      booksBorrowed: 2,
-    },
-    {
-      id: 1021,
-      name: "Draco Malfoy",
-      email: "draco@example.com",
-      booksBorrowed: 0,
-    },
-    {
-      id: 1022,
-      name: "Lily Potter",
-      email: "lily@example.com",
-      booksBorrowed: 1,
-    },
-    {
-      id: 1023,
-      name: "James Potter",
-      email: "james@example.com",
-      booksBorrowed: 2,
-    },
-    {
-      id: 1024,
-      name: "Dolores Umbridge",
-      email: "umbridge@example.com",
-      booksBorrowed: 0,
-    },
-    {
-      id: 1025,
-      name: "Viktor Krum",
-      email: "viktor@example.com",
-      booksBorrowed: 1,
-    },
-  ];
-
+  
   const emptyReaders = [
 
   ];
 
-  // const [readers, setReaders] = useState(hardCodedReaders);
   const [readers, setReaders] = useState(emptyReaders);
   const [selectedReader, setSelectedReader] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+const runAgain = async () => {
+  fetch("http://localhost:5000/api/members/getReader")
+     .then(res => res.json())
+     .then(
+       (result) => {
+         setReaders(result);
+         console.log(result);
+       })
+       }
 
-  const [newMember, setNewMember] = useState({
-    id: 0,
-    name: "",
-    email: "",
-    booksBorrowed: 0,
-  });
-
-  const fetchReaders = () => {
-    // Implement your logic to fetch readers and update the state
-    // const fetchedReaders = ...;
-    // setReaders(fetchedReaders);
-  };
 
   useEffect(() => {
     fetch("http://localhost:5000/api/members/getReader")
@@ -186,50 +40,9 @@ const Readers = () => {
     setSelectedReader(reader);
   };
 
-  const addMemberVal = () => {
-    fetch("http://localhost:5000/api/Members/getReaders")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setReaders(result);
-          console.log(result);
-        })
-        }
+  
 
-  const onSubmitAdd = async () => {
-    try {
-      const body = {newMember};
-      console.log(body);
-      const val = await fetch("http://localhost:5000/api/members/addReader", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
-      });
-      console.log("On submit",val);
-      console.log(newMember);
-      setShowAddForm(false);
-      addMemberVal();
-
-      console.log(newMember)
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  const handleAddReader = (newReader) => {
-    // // Set "Books Borrowed" to 0 for the new reader
-    // const readerWithZeroBooksBorrowed = { ...newReader, booksBorrowed: 0 };
-
-    // // Add the new reader to the state
-    // setReaders([...readers, readerWithZeroBooksBorrowed]);
-
-    // // Close the add form
-    // setShowAddForm(false);
-
-    console.log("On handle",newMember);
-    onSubmitAdd();
-  };
-
+  
   const handleSearch = () => {
     // Implement your search logic
     // For example, filter readers based on the search term
@@ -238,6 +51,46 @@ const Readers = () => {
     );
     setReaders([...filteredReaders]); // Use spread operator to create a new array
   };
+  const [newMember, setNewReader] = useState({
+    name: "",
+    email: "",
+    address: "",
+    phoneNumber: "",
+  });
+  
+  const onSubmitAdd = async () => {
+    try {
+      const body = newMember;
+      console.log(body);
+      const val = await fetch("http://localhost:5000/api/members/addReader", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+      console.log("On submit",val);
+      console.log(newMember);
+      console.log(newMember)
+      runAgain();
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+  
+  const handleAddReader = () => {
+    // // Set "Books Borrowed" to 0 for the new reader
+    // const readerWithZeroBooksBorrowed = { ...newReader, booksBorrowed: 0 };
+
+    // // Add the new reader to the state
+    // setReaders([...readers, readerWithZeroBooksBorrowed]);
+
+    // // Close the add form
+
+    console.log("On handle",newMember);
+    onSubmitAdd();
+    setShowAddForm(false);
+    // runAgain();
+  };
+
 
   return (
     <main className="readers-main-container">
@@ -293,11 +146,57 @@ const Readers = () => {
         />
       )}
       {showAddForm && (
-        <AddReaderForm
-          onAddReader={handleAddReader}
-          onClose={() => setShowAddForm(false)}
+        <div className="booklist-add-form" >
+        <div className="form-header" >
+          <h3>Add New Reader</h3>
+          <button
+            className="close-button"
+            onClick={() => setShowAddForm(false)}
+          >
+            <IoCloseSharp />
+          </button>
+        </div>
+
+        
+        <label>Name:</label>
+        <input
+          type="text"
+          value={newMember.name}
+          onChange={(e) => setNewReader({ ...newMember, name: e.target.value })}
         />
-      )}
+
+        <label>Email :</label>
+        <input
+          type="email"
+          value={newMember.email}
+          onChange={(e) => setNewReader({ ...newMember, email: e.target.value })}
+        />
+
+        
+        <label>Address:</label>
+        <input
+          type="text"
+          value={newMember.address}
+          onChange={(e) =>
+            setNewReader({ ...newMember, address: e.target.value })
+          }
+        />
+         <label>Phone Number:</label>
+        <input
+          type="number"
+          value={newMember.phoneNumber}
+          onChange={(e) =>
+            setNewReader({ ...newMember, phoneNumber: e.target.value })
+          }
+        />
+        <button className="center-align-button" 
+        onClick={handleAddReader}
+        >
+          Add Reader
+        </button>
+      </div>
+    )
+      }
     </main>
   );
 };

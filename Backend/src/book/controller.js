@@ -24,9 +24,8 @@ const addCopies = async (req, res) => {
 };
 
 const addBooks = async (req, res) => {
-    const val = req.body;
-    val1=val["newBook"];
-    console.log(val1);
+    const val1 = req.body;
+    
     const title = val1["title"];
     const author = val1["author"];
     const total = val1["total"];

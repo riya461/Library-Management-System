@@ -16,13 +16,26 @@ function LoginForm() {
     }
 
     try {
-      //implement login logic here
-      setError("");
-      localStorage.setItem("userid", userid);
-      localStorage.setItem("name", "Admin"); //change this to user
-      localStorage.setItem("category", "admin"); //change this to user
-      localStorage.setItem("token", "logged_in");
-      navigate("/");
+      fetch("http://localhost:5000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userid: userid,
+          password: password,
+        }),
+      }).then((res) => res.json()).then((result) => {
+        if (result != "NULL") {
+          setError("");
+          localStorage.setItem("userid", userid);
+          localStorage.setItem("name", result.name);
+          localStorage.setItem("category", result.category);
+          localStorage.setItem("token", "logged_in");
+          navigate("/");
+        }
+        else {
+          setError("An error occurred! Please check your credentials");
+        }
+      });
     } catch (error) {
       setError("An error occurred! Please check your credentials");
     }
@@ -39,7 +52,7 @@ function LoginForm() {
             type="text"
             value={userid}
             onChange={(e) => setUserid(e.target.value)}
-            placeholder="UserID"
+            placeholder="LoginID"
           />
           <input
             type="password"

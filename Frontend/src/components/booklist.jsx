@@ -41,7 +41,7 @@ const BookList = () => {
 
   const onSubmitAdd = async () => {
     try {
-      const body = {newBook};
+      const body = newBook;
       console.log(body);
       const val = await fetch("http://localhost:5000/api/books/add", {
         method: "POST",
@@ -77,7 +77,7 @@ const BookList = () => {
   });
   const AddCopyval = async () => {
     try {
-      const body = {copyBook};
+      const body = copyBook;
       console.log("copyBook",body);
       const val = await fetch("http://localhost:5000/api/books/addc", {
         method: "POST",
@@ -303,7 +303,7 @@ const BookList = () => {
           <input
             type="text"
             value={copyBook.copy}
-            onChange={(e) => setCopyBook({ ...newBook, copy: e.target.value })}
+            onChange={(e) => setCopyBook({ ...copyBook, copy: e.target.value })}
           />
           <button className="center-align-button" 
           onClick={handleCopy}

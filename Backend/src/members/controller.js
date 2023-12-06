@@ -18,13 +18,13 @@ const getReader= async (req, res) => {
 // }
 const addReader = async (req, res) => {
     const val = req.body;
+    console.log(val);
     const name = val["name"];
     const email = val["email"];
     const phone = val["phoneNumber"];
     const address = val["address"];
-    const password = "1234"
-    console.log(val1)
-    pool.query(queries.addReader,[name,email,address, phone],password, (error, results) => {
+    const password = "1234";
+    pool.query(queries.addReader,[name,email,address, phone,password], (error, results) => {
         if (error) {
             throw error;
         }

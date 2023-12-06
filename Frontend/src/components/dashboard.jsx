@@ -110,19 +110,26 @@ function Dashboard() {
         </div>
         <div className="card">
           <div className="card-inner">
+            <h3>AVAILABLE BOOKS</h3>
+            <PiBooksFill className="card_icon" />
+          </div>
+          <h1>{totalBooks}</h1>
+        </div>        
+        <div className="card">
+          <div className="card-inner">
             <h3>TOTAL AUTHORS</h3>
             <LiaPenNibSolid className="card_icon" />
           </div>
           <h1>{authorCount}</h1>
         </div>
         
-        {/* <div className="card">
+        <div className="card">
           <div className="card-inner">
             <h3>TOTAL MEMBERS</h3>
             <BsPeopleFill className="card_icon" />
           </div>
           <h1>{totalUsers}</h1>
-        </div> */}
+        </div>
       </div>
 
       <div className="charts">
@@ -175,56 +182,6 @@ function Dashboard() {
             </PieChart>
           </ResponsiveContainer>
         </div>
-
-        {/* <div className="pie-chart">
-          <h3>Members Overview:</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart className="chart">
-              <Pie
-                data={memebersData}
-                cx="50%"
-                cy="50%"
-                labelLine={false}
-                label={({
-                  cx,
-                  cy,
-                  midAngle,
-                  innerRadius,
-                  outerRadius,
-                  percent,
-                  index,
-                  name,
-                }) => {
-                  const radius =
-                    innerRadius + (outerRadius - innerRadius) * 0.5;
-                  const x = cx + radius * Math.cos(-midAngle * (Math.PI / 180));
-                  const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180));
-                  return (
-                    <text
-                      x={x}
-                      y={y}
-                      fill="white"
-                      textAnchor={x > cx ? "start" : "end"}
-                      dominantBaseline="central"
-                    >
-                      {`${name} ${(percent * 100).toFixed(0)}%`}
-                    </text>
-                  );
-                }}
-                outerRadius={80}
-                fill="#8884d8"
-                dataKey="value"
-              >
-                {memebersData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS2[index % COLORS2.length]}
-                  />
-                ))}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-        </div> */}
       </div>
     </main>
   );
