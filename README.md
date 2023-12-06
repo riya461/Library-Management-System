@@ -1,5 +1,6 @@
 # Library-Management-System
 
+<<<<<<< HEAD
 
 
 ### Table: authentication_system
@@ -91,3 +92,25 @@
   - `staff_pkey` PRIMARY KEY, btree (staff_id)
 - Referenced by:
   - TABLE `authentication_system` CONSTRAINT "authentication_system_staff_id_fkey" FOREIGN KEY (staff_id) REFERENCES staff(staff_id)
+=======
+## Database ER 
+---
+### Authentication_System
+loginid VARCHAR(255)
+password VARCHARS(255)
+staffid INT
+
+### Staff
+staffid INT
+name VARCHAR(10)
+
+### Reader
+userid INT
+email VARCHAR(255)
+address VARCHAR(255)
+firstname VARCHAR(50)
+lastname VARCHAR+(50)
+phone_no VARCHAR(15)
+
+
+>>>>>>> f0afcbe66a7ca2790ea2e180490f0153a3649ef9
