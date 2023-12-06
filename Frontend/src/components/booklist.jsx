@@ -86,12 +86,13 @@ const BookList = () => {
       });
       console.log("On submit",val);
       console.log(copyBook);
+      addBookVal();
       
     } catch (err) {
       console.error(err.message);
     }
     setShowAddCopyForm(false);
-    addBookVal();
+    // addBookVal();
    
   }
 
@@ -121,12 +122,12 @@ const BookList = () => {
       });
       console.log("On submit",val);
       console.log(DeleteBook);
-      
+      addBookVal();
     } catch (err) {
       console.error(err.message);
     }
     setShowAddDeleteForm(false);
-    addBookVal();
+    // addBookVal();
    
   }
   const AddAllDeleteval = async () => {
@@ -140,12 +141,13 @@ const BookList = () => {
       });
       console.log("On submit",val);
       console.log(DeleteBook);
+      addBookVal();
       
     } catch (err) {
       console.error(err.message);
     }
     setShowAddDeleteForm(false);
-    addBookVal();
+    // addBookVal();
    
   }
   const handleDelete = () => {
