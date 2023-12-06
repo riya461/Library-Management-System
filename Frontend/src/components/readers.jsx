@@ -149,10 +149,22 @@ const Readers = () => {
     },
   ];
 
-  const [readers, setReaders] = useState(hardCodedReaders);
+  const emptyReaders = [
+
+  ];
+
+  // const [readers, setReaders] = useState(hardCodedReaders);
+  const [readers, setReaders] = useState(emptyReaders);
   const [selectedReader, setSelectedReader] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [newMember, setNewMember] = useState({
+    id: 0,
+    name: "",
+    email: "",
+    booksBorrowed: 0,
+  });
 
   const fetchReaders = () => {
     // Implement your logic to fetch readers and update the state
@@ -161,28 +173,67 @@ const Readers = () => {
   };
 
   useEffect(() => {
-    fetchReaders();
-  }, []); // Fetch readers on component mount
+    fetch("http://localhost:5000/api/members/getReader")
+     .then(res => res.json())
+     .then(
+       (result) => {
+         setReaders(result);
+         console.log(result);
+       })
+       },[]);
 
   const handleReaderClick = (reader) => {
     setSelectedReader(reader);
   };
 
+  const addMemberVal = () => {
+    fetch("http://localhost:5000/api/Members/getReaders")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setReaders(result);
+          console.log(result);
+        })
+        }
+
+  const onSubmitAdd = async () => {
+    try {
+      const body = {newMember};
+      console.log(body);
+      const val = await fetch("http://localhost:5000/api/members/addReader", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+      console.log("On submit",val);
+      console.log(newMember);
+      setShowAddForm(false);
+      addMemberVal();
+
+      console.log(newMember)
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   const handleAddReader = (newReader) => {
-    // Set "Books Borrowed" to 0 for the new reader
-    const readerWithZeroBooksBorrowed = { ...newReader, booksBorrowed: 0 };
+    // // Set "Books Borrowed" to 0 for the new reader
+    // const readerWithZeroBooksBorrowed = { ...newReader, booksBorrowed: 0 };
 
-    // Add the new reader to the state
-    setReaders([...readers, readerWithZeroBooksBorrowed]);
+    // // Add the new reader to the state
+    // setReaders([...readers, readerWithZeroBooksBorrowed]);
 
-    // Close the add form
-    setShowAddForm(false);
+    // // Close the add form
+    // setShowAddForm(false);
+
+    console.log("On handle",newMember);
+    onSubmitAdd();
   };
 
   const handleSearch = () => {
     // Implement your search logic
     // For example, filter readers based on the search term
-    const filteredReaders = hardCodedReaders.filter((reader) =>
+    const filteredReaders = readers.filter((reader) =>
       reader.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setReaders([...filteredReaders]); // Use spread operator to create a new array
@@ -225,7 +276,7 @@ const Readers = () => {
           <tbody>
             {readers.map((reader) => (
               <tr key={reader.id} onClick={() => handleReaderClick(reader)}>
-                <td>{reader.id}</td>
+                <td>{reader.member_id}</td>
                 <td>{reader.name}</td>
                 <td>{reader.email}</td>
                 <td>{reader.booksBorrowed}</td>

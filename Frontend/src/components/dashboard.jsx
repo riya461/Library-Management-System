@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { BsPeopleFill } from "react-icons/bs";
 import { PiBooksFill } from "react-icons/pi";
 import { BiSolidBusiness } from "react-icons/bi";
@@ -7,14 +8,54 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import "./styles/dashboard.css";
 
 function Dashboard() {
+
+  const [availableCount, setAvailableCount] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+
+  const [authorCount, setAuthorCount] = useState(0);
+
+  //setting total books value
+  useEffect(() => {
+    fetch("http://localhost:5000/api/dash/totalBooks")
+     .then(res => res.json())
+     .then(
+       (result) => {
+         setTotalCount(parseInt(result.totalbooks, 10));
+         console.log(parseInt(result.totalbooks, 10));
+       })
+       },[]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/dash/availableCount")
+     .then(res => res.json())
+     .then(
+       (result) => {
+         setAvailableCount(parseInt(result.available, 10));
+         console.log(parseInt(result.available, 10));
+       })
+       },[]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/dash/totalAuthors")
+     .then(res => res.json())
+     .then(
+       (result) => {
+         setAuthorCount(parseInt(result.count, 10));
+         console.log(parseInt(result.count, 10));
+       })
+       },[]);
+
+
+
+
   const bookData = [
     {
       name: "Available",
-      value: 400,
+      value: availableCount,
     },
     {
       name: "Borrowed",
-      value: 300,
+      value: totalCount - availableCount,
     },
   ];
 
@@ -72,22 +113,16 @@ function Dashboard() {
             <h3>TOTAL AUTHORS</h3>
             <LiaPenNibSolid className="card_icon" />
           </div>
-          <h1>600</h1>
+          <h1>{authorCount}</h1>
         </div>
-        <div className="card">
-          <div className="card-inner">
-            <h3>TOTAL PUBLISHERS</h3>
-            <BiSolidBusiness className="card_icon" />
-          </div>
-          <h1>250</h1>
-        </div>
-        <div className="card">
+        
+        {/* <div className="card">
           <div className="card-inner">
             <h3>TOTAL MEMBERS</h3>
             <BsPeopleFill className="card_icon" />
           </div>
           <h1>{totalUsers}</h1>
-        </div>
+        </div> */}
       </div>
 
       <div className="charts">
@@ -141,7 +176,7 @@ function Dashboard() {
           </ResponsiveContainer>
         </div>
 
-        <div className="pie-chart">
+        {/* <div className="pie-chart">
           <h3>Members Overview:</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart className="chart">
@@ -189,7 +224,7 @@ function Dashboard() {
               </Pie>
             </PieChart>
           </ResponsiveContainer>
-        </div>
+        </div> */}
       </div>
     </main>
   );

@@ -1,30 +1,22 @@
-const express = require('express')
-const app = express()
-const cors = require('cors')
-const pool = require('./db')
+const express = require('express');
+const app = express();
+app.use(express.json());
 
-//middleware
-app.use(cors())
-app.use(express.json())
+const bookRouter = require('./src/book/routes');
+const dashRouter = require('./src/dash/routes');
+const membersRouter = require('./src/members/routes');
 
-//ROUTES//
+const cors = require('cors');
+app.use(cors());
 
-// create a book
-app.post('/books', async (req, res) => {
-  try {
-    const { id, title, author, available, borrowed } = req.body
-    const newBook = await pool.query(
-      "", 
-      // here inser book query 
-      [title, author, genre, pages]
-    )
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
 
-    res.json(newBook.rows[0])
-  } catch (err) {
-    console.error(err.message)
-  }
-})
+app.use("/api/books", bookRouter);
+app.use("/api/dash", dashRouter);
+app.use("/api/members", membersRouter);
 
 app.listen(5000, () => {
-  console.log('Server is listening on port 5000')
-})
+    console.log('server started');
+});
