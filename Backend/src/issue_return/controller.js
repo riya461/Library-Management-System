@@ -43,21 +43,25 @@ const issue = async (req, res) => {
 };
 
 const returnBook = async (req, res) => {
-    pool.query(queries.returnBook, (error, results) => {
+    const val = req.body;
+    console.log(val);
+    const book_id = val["book_id"];
+    const memberid = val["member_id"];
+    console.log(book_id);
+    console.log(memberid);
+    pool.query(queries.updateReturn, [book_id],(error, results) => {
+        if (error) {
+            throw error;
+        }
+    });
+    pool.query(queries.returnBook, [book_id,memberid],(error, results) => {
         if (error) {
             throw error;
         }
         res.status(200).json(results.rows);
     });
 };
-const updateReturn = async (req, res) => {
-    pool.query(queries.updateReturn, (error, results) => {
-        if (error) {
-            throw error;
-        }
-        res.status(200).json(results.rows);
-    });
-};
+
 
 
 
@@ -66,5 +70,4 @@ module.exports = {
     getData,
     issue,
     returnBook,
-    updateReturn
 };

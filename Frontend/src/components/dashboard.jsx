@@ -12,6 +12,7 @@ function Dashboard() {
   const [totalCount, setTotalCount] = useState(0);
 
   const [authorCount, setAuthorCount] = useState(0);
+  const [memCount, setMemCount] = useState(0);
 
   //setting total books value
   useEffect(() => {
@@ -43,6 +44,15 @@ function Dashboard() {
          console.log(parseInt(result.count, 10));
        })
        },[]);
+       useEffect(() => {
+        fetch("http://localhost:5000/api/dash/totalReaders")
+         .then(res => res.json())
+         .then(
+           (result) => {
+             setMemCount(parseInt(result["totalreaders"], 10));
+             console.log(parseInt(result));
+           })
+           },[]);
 
 
 
@@ -127,7 +137,7 @@ function Dashboard() {
             <h3>TOTAL MEMBERS</h3>
             <BsPeopleFill className="card_icon" />
           </div>
-          <h1>{totalUsers}</h1>
+          <h1>{memCount}</h1>
         </div>
       </div>
 

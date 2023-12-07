@@ -6,7 +6,6 @@ router.get('/validateId', controller.validateId);
 router.get('/getData', controller.getData);
 router.post('/issue', controller.issue);
 router.delete('/returnBook', controller.returnBook);
-router.put('/updateReturn',controller.updateReturn);
 
 
 

@@ -14,31 +14,32 @@ function LoginForm() {
       setError("Please fill in all fields");
       return;
     }
+    navigate("/lms");
 
-    try {
-      fetch("http://localhost:5000/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userid: userid,
-          password: password,
-        }),
-      }).then((res) => res.json()).then((result) => {
-        if (result != "NULL") {
-          setError("");
-          localStorage.setItem("userid", userid);
-          localStorage.setItem("name", result.name);
-          localStorage.setItem("category", result.category);
-          localStorage.setItem("token", "logged_in");
-          navigate("/");
-        }
-        else {
-          setError("An error occurred! Please check your credentials");
-        }
-      });
-    } catch (error) {
-      setError("An error occurred! Please check your credentials");
-    }
+  //   try {
+  //     fetch("http://localhost:5000/api/login", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         userid: userid,
+  //         password: password,
+  //       }),
+  //     }).then((res) => res.json()).then((result) => {
+  //       if (result != "NULL") {
+  //         setError("");
+  //         localStorage.setItem("userid", userid);
+  //         localStorage.setItem("name", result.name);
+  //         localStorage.setItem("category", result.category);
+  //         localStorage.setItem("token", "logged_in");
+  //         navigate("/");
+  //       }
+  //       else {
+  //         setError("An error occurred! Please check your credentials");
+  //       }
+  //     });
+  //   } catch (error) {
+  //     setError("An error occurred! Please check your credentials");
+  //   }
   };
 
   return (
