@@ -3,14 +3,14 @@ import "./styles/issueReturn.css";
 
 function IssueReturn() {
   const [userId, setUserId] = useState("");
-  const [isValidUser, setIsValidUser] = useState(false);
+  const [isValidUser, setIsValidUser] = useState(true);
   const [selectedAction, setSelectedAction] = useState("");
-  const [bookId, setBookId] = useState("");
   const [bookAvailable, setBookAvailable] = useState(true);
   const [issueBook, setBook] = useState({
     member_id: "",
     book_id: ""
   });
+  console.log("1",issueBook)
   const  handleBookSelection = async()=> {
       try {
         const body = issueBook ;
@@ -27,6 +27,9 @@ function IssueReturn() {
       } catch (err) {
         console.error(err.message);
       }
+      console.log(issueBook );
+
+      // window.location.reload(false)
     }
   
 
@@ -41,17 +44,21 @@ function IssueReturn() {
         body: JSON.stringify(body)
       });
       console.log("On submit",val);
-      console.log(issueBook );
       console.log(issueBook )
      
     } catch (err) {
       console.error(err.message);
     }
+    console.log(issueBook );
+
+    // window.location.reload(false)
+
     
   }
 
-  function validateUser(userId) {
+  function validateUser() {
     // Implement logic to validate the user
+    console.log(issueBook)
     setIsValidUser(true);
   }
 
@@ -63,18 +70,19 @@ function IssueReturn() {
   return (
     <div className="container">
       <h2>Issue and Return Books</h2>
-      <div className="user-input">
+      {/* <div className="user-input">
         <label htmlFor="userId">User ID:</label>
         <input
           type="text"
           id="userId"
           value={issueBook.member_id}
           onChange={(e) => setBook({ ...issueBook.member_id, member_id: e.target.value })}
+          
         />
-        <button onClick={() => validateUser(userId)} className="action-button">
+        <button onClick={validateUser} className="action-button">
           Validate
         </button>
-      </div>
+      </div> */}
 
       {isValidUser && (
         <div className="button-group">
@@ -87,13 +95,21 @@ function IssueReturn() {
 
       {selectedAction === "issue" && (
         <div>
+          <label htmlFor="userId" className="user-input">User ID:</label>
+        <input
+          type="text"
+          id="userId"
+          value={issueBook.member_id}
+          onChange={(e) => setBook({ ...issueBook, member_id: e.target.value })}
+          
+        />
           <div className="book-input">
             <label htmlFor="bookId">Book ID:</label>
             <input
               type="text"
               id="bookId"
               value={issueBook.book_id}
-              onChange={(e) => setBook({ ...issueBook.book_id, book_id: e.target.value })}
+              onChange={(e) => setBook({ ...issueBook, book_id: e.target.value })}
             />
             
             <button
@@ -117,6 +133,14 @@ function IssueReturn() {
 
       {selectedAction === "return" && (
         <div>
+        <label htmlFor="userId" className="user-input">User ID:</label>
+        <input
+          type="text"
+          id="userId"
+          value={issueBook.member_id}
+          onChange={(e) => setBook({ ...issueBook.member_id, member_id: e.target.value })}
+          
+        />
         <div className="book-input">
           <label htmlFor="bookId">Book ID:</label>
           <input
