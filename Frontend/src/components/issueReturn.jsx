@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./styles/issueReturn.css";
 
 function IssueReturn() {
-  const [userId, setUserId] = useState("");
+  // const [userId, setUserId] = useState("");
   const [isValidUser, setIsValidUser] = useState(true);
   const [selectedAction, setSelectedAction] = useState("");
   const [bookAvailable, setBookAvailable] = useState(true);
@@ -29,7 +29,7 @@ function IssueReturn() {
       }
       console.log(issueBook );
 
-      // window.location.reload(false)
+      window.location.reload(false)
     }
   
 
@@ -51,21 +51,21 @@ function IssueReturn() {
     }
     console.log(issueBook );
 
-    // window.location.reload(false)
+    window.location.reload(false)
 
     
   }
 
-  function validateUser() {
-    // Implement logic to validate the user
-    console.log(issueBook)
-    setIsValidUser(true);
-  }
+  // function validateUser() {
+  //   // Implement logic to validate the user
+  //   console.log(issueBook)
+  //   setIsValidUser(true);
+  // }
 
-  function searchBookAvailability(bookId) {
-    // Implement logic to search book availability
-    setBookAvailable(true);
-  }
+  // function searchBookAvailability(bookId) {
+  //   // Implement logic to search book availability
+  //   setBookAvailable(true);
+  // }
 
   return (
     <div className="container">
@@ -112,12 +112,12 @@ function IssueReturn() {
               onChange={(e) => setBook({ ...issueBook, book_id: e.target.value })}
             />
             
-            <button
+            {/* <button
               onClick={() => searchBookAvailability(bookId)}
               className="action-button"
             >
               Search
-            </button>
+            </button> */}
           </div>
           {bookAvailable && (
             <button
@@ -150,12 +150,12 @@ function IssueReturn() {
             onChange={(e) => setBook({ ...issueBook.book_id, book_id: e.target.value })}
           />
           
-          <button
+          {/* <button
             onClick={() => searchBookAvailability(bookId)}
             className="action-button"
           >
             Search
-          </button>
+          </button> */}
         </div>
         {bookAvailable && (
           <button

@@ -123,7 +123,7 @@ const runAgain = async () => {
               <th>Reader ID</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Books Borrowed</th>
+              {/* <th>Books Borrowed</th> */}
             </tr>
           </thead>
           <tbody>
@@ -132,7 +132,7 @@ const runAgain = async () => {
                 <td>{reader.member_id}</td>
                 <td>{reader.name}</td>
                 <td>{reader.email}</td>
-                <td>{reader.booksBorrowed}</td>
+                {/* <td>{reader.booksBorrowed}</td> */}
               </tr>
             ))}
           </tbody>
