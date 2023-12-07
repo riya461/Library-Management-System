@@ -1,9 +1,10 @@
-const validateId='SELECT i.member_id from members m,issue_return i where i.member_id=m.member_id'
-const getData = 'SELECT * FROM issue_return';
-const issueBook = 'UPDATE book set available=available-1 and borrowed = borrowed+1 where book_id=(SELECT book_id from issue_return where book_id=$1) ';
-const issue ='INSERT into issue_return values( $1, $2, $3, $4, $5, $6)';
-const returnBook='DELETE from issue_return where issue_return_id=$1';
-const updateReturn='UPDATE book set available=available+1 and borrowed=borrowed-1 where book_id=(SELECT book_id from issue_return where book_id=$1) ';
+const validateId='SELECT member_id FROM members WHERE EXISTS(SELECT member_id from members where member_id=$1)'
+const getData = 'SELECT * FROM issues_returns';
+const issueBook = 'UPDATE book set available=available-1  where book_id=$1 ';
+const issue = ' INSERT INTO issues_returns (member_id, book_id) VALUES ($2, $1)';
+
+const returnBook='DELETE from issues_returns where issues_returns_id=$1';
+const updateReturn='UPDATE book set available=available+1 and borrowed=borrowed-1 where book_id=(SELECT book_id from issues_returns where book_id=$1) ';
 
 module.exports = {
     validateId,

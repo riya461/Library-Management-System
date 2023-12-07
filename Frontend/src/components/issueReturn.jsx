@@ -7,10 +7,28 @@ function IssueReturn() {
   const [selectedAction, setSelectedAction] = useState("");
   const [bookId, setBookId] = useState("");
   const [bookAvailable, setBookAvailable] = useState(true);
-
-  function handleBookSelection(book) {
-    // Implement logic to handle book selection
-  }
+  const [issueBook, setBook] = useState({
+    member_id: "",
+    book_id: ""
+  });
+  const  handleBookSelection = async()=> {
+      try {
+        const body = issueBook ;
+        console.log(body);
+        const val = await fetch("http://localhost:5000/api/members/addReader", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+        console.log("On submit",val);
+        console.log(issueBook );
+        console.log(issueBook )
+       
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
+  
 
   function handleBookReturn(book) {
     // Implement logic to return the book
@@ -34,8 +52,8 @@ function IssueReturn() {
         <input
           type="text"
           id="userId"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={issueBook.member_id}
+          onChange={(e) => setBook({ ...issueBook.member_id, name: e.target.value })}
         />
         <button onClick={() => validateUser(userId)} className="action-button">
           Validate
@@ -58,9 +76,10 @@ function IssueReturn() {
             <input
               type="text"
               id="bookId"
-              value={bookId}
-              onChange={(e) => setBookId(e.target.value)}
+              value={issueBook.book_id}
+              onChange={(e) => setBook({ ...issueBook.book_id, name: e.target.value })}
             />
+            
             <button
               onClick={() => searchBookAvailability(bookId)}
               className="action-button"

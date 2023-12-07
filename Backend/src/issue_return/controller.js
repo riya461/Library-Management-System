@@ -1,10 +1,15 @@
 const pool = require('../../db');
 const queries = require('./queries');
 const validateId= async (req, res) => {
-    pool.query(queries.validateId, (error, results) => {
+    const val = req.body;
+    console.log(val);
+    const valid = val["id"];
+    console.log(valid);
+    pool.query(queries.validateId,[valid], (error, results) => {
         if (error) {
             throw error;
         }
+        console.log(results.rows);
         res.status(200).json(results.rows);
     });
 };
@@ -16,22 +21,27 @@ const getData = async (req, res) => {
         res.status(200).json(results.rows);
     });
 };
-const issueBook = async (req, res) => {
-    pool.query(queries.issueBook, (error, results) => {
-        if (error) {
-            throw error;
-        }
-        res.status(200).json(results.rows);
-    });
-};
+
 const issue = async (req, res) => {
-    pool.query(queries.issue, (error, results) => {
+    const val = req.body;
+    console.log(val);
+    const book_id = val["book_id"];
+    const memberid = val["member_id"];
+    console.log(book_id);
+    console.log(memberid);
+    pool.query(queries.issueBook, [book_id],(error, results) => {
+        if (error) {
+            throw error;
+        }
+    });
+    pool.query(queries.issue, [book_id,memberid],(error, results) => {
         if (error) {
             throw error;
         }
         res.status(200).json(results.rows);
     });
 };
+
 const returnBook = async (req, res) => {
     pool.query(queries.returnBook, (error, results) => {
         if (error) {
@@ -54,7 +64,6 @@ const updateReturn = async (req, res) => {
 module.exports = {
     validateId,
     getData,
-    issueBook,
     issue,
     returnBook,
     updateReturn

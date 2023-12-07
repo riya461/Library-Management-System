@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { BsPeopleFill } from "react-icons/bs";
 import { PiBooksFill } from "react-icons/pi";
-import { BiSolidBusiness } from "react-icons/bi";
 import { LiaPenNibSolid } from "react-icons/lia";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import "./styles/dashboard.css";
@@ -113,7 +112,7 @@ function Dashboard() {
             <h3>AVAILABLE BOOKS</h3>
             <PiBooksFill className="card_icon" />
           </div>
-          <h1>{totalBooks}</h1>
+          <h1>{availableCount}</h1>
         </div>        
         <div className="card">
           <div className="card-inner">
