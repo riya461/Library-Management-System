@@ -8,6 +8,7 @@ const deleteBook = 'DELETE from book where book_id = $1 ';
 const deleteCopies_avail = 'UPDATE book set total=total-$2, available = available-$2 where book_id=$1';
 const deleteCopies_borrow = 'UPDATE book set total=total-$2 where book_id=$1';
 const addAuthors = 'INSERT INTO authors(author_name) values($1)';
+const getAuthors = 'SELECT count(*) from authors where author_name = $1';
 
 module.exports = {
     getBooks,
@@ -16,7 +17,7 @@ module.exports = {
     deleteBook,
     deleteCopies_avail,
     deleteCopies_borrow,
-    
+    getAuthors,
     addAuthors
     
 };

@@ -33,21 +33,18 @@ const addBooks = async (req, res) => {
 
         if (error) {
             
-
+            // ignore error
+            
             console.log(error);
         }
-        else{
-            const {newBook} = req.body;
-            console.log(newBook);
-            
-
-        }
-        pool.query(queries.addBooks, [title,author,total], (error, results) => {
-            if (error) {
-                throw error;
+       
+        pool.query(queries.addBooks, [title,author,total], (errors, results) => {
+            if (errors) {
+                throw errors;
             }
+        res.status(200).json(results.rows[0]);
+
         });
-        res.status(200).json(results.rows);
     });
 };
 const deleteCopies = async (req, res) => {
