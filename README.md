@@ -1,7 +1,5 @@
 # Library-Management-System
 
-<<<<<<< HEAD
-
 
 ### Table: authentication_system
 
@@ -112,5 +110,3 @@ firstname VARCHAR(50)
 lastname VARCHAR+(50)
 phone_no VARCHAR(15)
 
-
->>>>>>> f0afcbe66a7ca2790ea2e180490f0153a3649ef9
